@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Basis — Digital Imaging Technician Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     VIEW 1: MAIN SITE
+══════════════════════════════════════════ -->
+<div id="view-main" class="view active">
+
+  <nav id="main-nav">
+    <img src="assets/images/Logo3_withBG.png" alt="Project Basis" style="height:48px;width:auto;cursor:pointer;display:block;" onclick="showView('main')">
+    <ul class="nav-links">
+      <li><a onclick="scrollToSection('services')">Services</a></li>
+      <li><a onclick="scrollToSection('about')">About</a></li>
+      <li><a onclick="scrollToSection('work')">Work</a></li>
+      <li><a onclick="scrollToSection('contact')">Contact</a></li>
+      <li><a class="cta" onclick="goToWorkspace()">DIT Workspace</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <p class="hero-tag">Digital Imaging Technician Services</p>
+    <div class="hero-logo-wrap" style="margin-bottom:40px;">
+      <img src="assets/images/Logo3_withBG.png" alt="Project Basis" style="width:min(640px,80vw);height:auto;display:block;" />
+    </div>
+    <p class="hero-subtitle">Precision color management and data workflows for <strong>cinema-grade productions.</strong></p>
+    <div class="scroll-cue">
+      <span>Explore</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-header">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">DIT Services</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3 class="service-name">On-Set Monitoring</h3>
+        <p class="service-desc">Real-time color-accurate monitoring with calibrated displays ensuring directors and cinematographers see exactly what's being captured.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2a10 10 0 1 0 10 10"/></svg></div>
+        <h3 class="service-name">Live Color Grading</h3>
+        <p class="service-desc">Immediate look application and creative color work on set, providing instant visual feedback for the entire production team.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="3"/><path d="M2 12c0 4.97 4.48 9 10 9s10-4.03 10-9"/><path d="M2 7c0 4.97 4.48 9 10 9s10-4.03 10-9"/></svg></div>
+        <h3 class="service-name">Data Management</h3>
+        <p class="service-desc">Secure, redundant backup systems with checksum verification ensuring your footage is protected from the moment it's recorded.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <h3 class="service-name">Quality Control</h3>
+        <p class="service-desc">Comprehensive frame-by-frame analysis and technical QC reports delivered daily to maintain the highest production standards.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <h3 class="service-name">Workflow Design</h3>
+        <p class="service-desc">Custom pipeline development tailored to your production's unique needs, from camera to post-production handoff.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M17 7h5M2 17h5M17 17h5"/></svg></div>
+        <h3 class="service-name">Dailies Processing</h3>
+        <p class="service-desc">Same-day editorial proxies with synced audio and applied looks, keeping your edit team on schedule.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <div id="about">
+    <div>
+      <p class="section-label">About Us</p>
+      <h2 class="section-title">Crafting the<br><em>Visual Foundation</em></h2>
+      <div class="rule"></div>
+      <div class="about-body">
+        <p>Project Basis was founded on a simple principle: every frame matters. As dedicated Digital Imaging Technicians, we bridge the gap between the creative vision on set and the technical excellence required in post-production.</p>
+        <p>With years of experience across feature films, commercials, and episodic content, we bring meticulous attention to color science, data integrity, and workflow optimization to every project we touch.</p>
+        <p>Our commitment is to be invisible when things go right, and indispensable when challenges arise.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat"><div class="stat-number">50+</div><div class="stat-label">Productions</div></div>
+        <div class="stat"><div class="stat-number">10+</div><div class="stat-label">Years</div></div>
+        <div class="stat"><div class="stat-number">100%</div><div class="stat-label">Data Safe</div></div>
+      </div>
+    </div>
+    <div class="about-image">
+      <div class="clapboard">
+        <div class="clapboard-body">
+          <div class="clapboard-arm"></div>
+          <div class="clapboard-stripe"></div>
+          <div class="clapboard-fields">
+            <div class="cb-field"><div class="cb-field-label">Production</div><div class="cb-field-value">PB-001</div></div>
+            <div class="cb-field"><div class="cb-field-label">Scene</div><div class="cb-field-value">A12</div></div>
+            <div class="cb-field"><div class="cb-field-label">Take</div><div class="cb-field-value">3</div></div>
+            <div class="cb-field" style="grid-column:span 3"><div class="cb-field-label">Director / DP</div><div class="cb-field-value" style="font-size:12px">Project Basis LLC</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="work-header">
+      <p class="section-label">Our Work</p>
+      <h2 class="section-title">Production Experience</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-card-bg film"></div>
+        <div class="wc-illustration">
+          <svg width="140" height="140" viewBox="0 0 140 140" stroke="#C8922A" fill="none" stroke-width="1.5"><rect x="20" y="40" width="100" height="70" rx="4"/><circle cx="70" cy="75" r="22"/><circle cx="70" cy="75" r="8"/><rect x="28" y="48" width="14" height="14" rx="2"/><rect x="98" y="48" width="14" height="14" rx="2"/><rect x="28" y="93" width="14" height="14" rx="2"/><rect x="98" y="93" width="14" height="14" rx="2"/><line x1="20" y1="32" x2="120" y2="20"/><line x1="20" y1="40" x2="20" y2="32"/><line x1="120" y1="40" x2="120" y2="20"/></svg>
+        </div>
+        <div class="work-card-overlay"></div>
+        <div class="work-card-content">
+          <div class="work-card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg></div>
+          <div class="work-card-title">Feature Films</div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-card-bg tv"></div>
+        <div class="wc-illustration">
+          <svg width="140" height="140" viewBox="0 0 140 140" stroke="#C8922A" fill="none" stroke-width="1.5"><rect x="15" y="30" width="110" height="72" rx="5"/><line x1="50" y1="102" x2="90" y2="102"/><line x1="70" y1="102" x2="70" y2="115"/><line x1="50" y1="115" x2="90" y2="115"/><circle cx="70" cy="66" r="20"/><polygon points="62,58 62,74 82,66" fill="#C8922A" stroke="none"/></svg>
+        </div>
+        <div class="work-card-overlay"></div>
+        <div class="work-card-content">
+          <div class="work-card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
+          <div class="work-card-title">Television</div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-card-bg comm"></div>
+        <div class="wc-illustration">
+          <svg width="140" height="140" viewBox="0 0 140 140" stroke="#C8922A" fill="none" stroke-width="1.5"><circle cx="70" cy="70" r="35"/><circle cx="70" cy="70" r="18"/><line x1="70" y1="35" x2="70" y2="52"/><line x1="70" y1="88" x2="70" y2="105"/><line x1="35" y1="70" x2="52" y2="70"/><line x1="88" y1="70" x2="105" y2="70"/></svg>
+        </div>
+        <div class="work-card-overlay"></div>
+        <div class="work-card-content">
+          <div class="work-card-icon"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+          <div class="work-card-title">Commercials</div>
+        </div>
+      </div>
+    </div>
+    <div class="trust-bar">
+      <div class="trust-label">Trusted by leading production companies</div>
+      <div class="trust-logos">
+        <span class="trust-logo">Production Co.</span>
+        <span class="trust-logo">Studio A</span>
+        <span class="trust-logo">Film Works</span>
+        <span class="trust-logo">Cinema Labs</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div>
+        <p class="section-label">Get In Touch</p>
+        <h2 class="section-title">Let's Work<br><em>Together</em></h2>
+        <div class="rule"></div>
+        <p style="font-size:15px;color:var(--text);max-width:360px;line-height:1.8;">Ready to elevate your production's image pipeline? We'd love to hear about your project and discuss how we can support your vision.</p>
+        <div class="contact-info-list">
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><div class="contact-info-label">Email</div><div class="contact-info-value">projectbasisllc@gmail.com</div></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.37 2 2 0 0 1 3.56 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.72a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div><div class="contact-info-label">Phone</div><div class="contact-info-value">424-325-8892</div></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="contact-info-label">Based In</div><div class="contact-info-value">Duluth, MN</div></div>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="handleContact(event)">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Name</label><input class="form-input" type="text" placeholder="Your name" /></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="your@email.com" /></div>
+        </div>
+        <div class="form-group"><label class="form-label">Project Type</label><input class="form-input" type="text" placeholder="Feature Film, Commercial, TV Series..." /></div>
+        <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" placeholder="Tell us about your project..."></textarea></div>
+        <button type="submit" class="btn-send">
+          Send Message
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="main-footer">
+    <img src="assets/images/Logo3_withBG.png" alt="Project Basis" style="height:48px;width:auto;cursor:pointer;display:block;" onclick="showView('main')">
+    <div class="footer-social">
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="#" aria-label="Vimeo"><svg viewBox="0 0 24 24"><path d="M21.6 8.8c-.8 4.5-5.6 9.5-8.5 11.3C10 22.1 7.4 21 6.5 18.3c-.5-1.6-2-8-2.5-8.8-.5-.8-1.7-.4-2.3.2L.5 8.5C2.7 6.5 5 4 7 4.1c2 0 3.3 1.5 3.7 4.5.4 3.3.8 5.2 1.2 5.7.5.8 1.2.5 2-.3 1.4-1.5 2.7-3.9 2.8-5.3.1-1.9-1.5-2.7-3.1-1.9C14.8 2.5 20 2.7 21.6 8.8z"/></svg></a>
+    </div>
+    <p class="footer-copy">© 2026 Project Basis. All rights reserved.</p>
+  </footer>
+
+</div><!-- /view-main -->
+
+
+<!-- ══════════════════════════════════════════
+     VIEW 2: LOGIN / REGISTER
+══════════════════════════════════════════ -->
+<div id="view-login" class="view">
+
+  <nav class="login-nav">
+    <img src="assets/images/Logo3_withBG.png" alt="Project Basis" style="height:48px;width:auto;cursor:pointer;display:block;" onclick="showView('main')">
+    <button class="nav-back" onclick="showView('main')">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to site
+    </button>
+  </nav>
+
+  <div class="login-page">
+    <div class="login-left">
+      <p class="section-label">DIT Workspace</p>
+      <h1 class="section-title">Member<br><em>Access Portal</em></h1>
+      <div class="panel-rule"></div>
+      <p class="panel-desc">The Project Basis DIT Workspace is a private tool for credentialed members to manage mag logs, delivery records, and daily data reports on production.</p>
+      <div class="feature-list">
+        <div class="feature-item"><div class="feature-dot"></div>Individual card tracking &amp; mag logs</div>
+        <div class="feature-item"><div class="feature-dot"></div>Drive delivery log with chain of custody</div>
+        <div class="feature-item"><div class="feature-dot"></div>Checksum &amp; backup status tracking</div>
+        <div class="feature-item"><div class="feature-dot"></div>CSV export for post-production handoff</div>
+        <div class="feature-item"><div class="feature-dot"></div>Daily notes and issue logging</div>
+      </div>
+    </div>
+
+    <div class="login-right">
+      <div class="tab-bar">
+        <button class="tab-btn active" id="tab-login" onclick="switchAuthTab('login')">Sign In</button>
+        <button class="tab-btn" id="tab-register" onclick="switchAuthTab('register')">Register</button>
+      </div>
+
+      <!-- LOGIN -->
+      <div class="auth-panel" id="auth-login">
+        <h2>Welcome back</h2>
+        <p class="form-sub">Sign in to access the DIT Workspace.</p>
+        <div class="alert error" id="login-error"></div>
+        <div class="alert success" id="login-success"></div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input class="form-input" type="email" id="login-email" placeholder="your@email.com" autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <div class="form-input-wrap">
+            <input class="form-input" type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" style="padding-right:44px" />
+            <button class="toggle-pw" type="button" onclick="togglePw('login-password',this)">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <button class="btn-submit" onclick="handleLogin()">
+          Sign In <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <div class="form-footer">Don't have an account? <a onclick="switchAuthTab('register')">Register here</a></div>
+      </div>
+
+      <!-- REGISTER -->
+      <div class="auth-panel" id="auth-register" style="display:none">
+        <h2>Create account</h2>
+        <p class="form-sub">Request access to the Project Basis DIT Workspace.</p>
+        <div class="alert error" id="reg-error"></div>
+        <div class="alert success" id="reg-success"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" id="reg-first" placeholder="Jane" /></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" id="reg-last" placeholder="Smith" /></div>
+        </div>
+        <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" id="reg-email" placeholder="your@email.com" /></div>
+        <div class="form-group"><label class="form-label">Role / Production Title</label><input class="form-input" type="text" id="reg-role" placeholder="DIT, Data Manager, Post Supervisor..." /></div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <div class="form-input-wrap">
+            <input class="form-input" type="password" id="reg-password" placeholder="Min. 8 characters" autocomplete="new-password" style="padding-right:44px" oninput="updateStrength(this.value)" />
+            <button class="toggle-pw" type="button" onclick="togglePw('reg-password',this)">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <div class="strength-bar" id="strength-bar"><div class="strength-fill" id="strength-fill"></div></div>
+          <div class="strength-label" id="strength-label"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Confirm Password</label>
+          <div class="form-input-wrap">
+            <input class="form-input" type="password" id="reg-confirm" placeholder="••••••••" autocomplete="new-password" style="padding-right:44px" />
+            <button class="toggle-pw" type="button" onclick="togglePw('reg-confirm',this)">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Access Code</label>
+          <input class="form-input" type="password" id="reg-access-code" placeholder="Enter access code" autocomplete="off" />
+          <div style="font-size:12px;color:var(--muted);margin-top:5px">Contact Project Basis to receive your access code.</div>
+        </div>
+        <button class="btn-submit" onclick="handleRegister()">
+          Create Account <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <div class="form-footer">Already have an account? <a onclick="switchAuthTab('login')">Sign in</a></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /view-login -->
+
+
+<!-- ══════════════════════════════════════════
+     VIEW 3: DIT WORKSPACE
+══════════════════════════════════════════ -->
+<div id="view-workspace" class="view">
+
+  <nav id="ws-nav">
+    <div class="ws-nav-left">
+      <img src="assets/images/Logo3_withBG.png" alt="Project Basis" style="height:36px;width:auto;cursor:pointer;display:block;" onclick="signOut()">
+      <span class="ws-workspace-label">DIT Workspace</span>
+    </div>
+    <div class="ws-nav-right">
+      <div class="user-pill">
+        <div class="user-avatar" id="user-avatar"></div>
+        <span class="user-name" id="user-name"></span>
+      </div>
+      <button class="btn-signout" onclick="signOut()">
+        <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign Out
+      </button>
+    </div>
+  </nav>
+
+  <div class="ws-page-header">
+    <div>
+      <p class="ws-page-tag">DIT Workspace</p>
+      <h1 class="ws-page-title">Production <em>Reports</em></h1>
+    </div>
+    <div class="day-selector">
+      <span class="day-label">Date</span>
+      <input type="date" class="day-input" id="prod-date" onchange="loadReport()">
+    </div>
+  </div>
+
+  <div class="ws-main">
+
+  <!-- ═══ MAIN TAB BAR ═══ -->
+  <div class="ws-tab-bar">
+    <button class="ws-tab active" onclick="switchWsTab('reports')">Production Reports</button>
+    <button class="ws-tab" onclick="switchWsTab('preproduction')">Pre-Production Checklist</button>
+    <button class="ws-tab" onclick="switchWsTab('postproduction')">Post-Production Checklist</button>
+    <button class="ws-tab" onclick="switchWsTab('contract')">Services Contract</button>
+  </div>
+
+  <!-- ══ TAB: PRODUCTION REPORTS ══ -->
+  <div class="ws-tab-content active" id="tab-reports">
+    <div class="ws-subtab-bar" style="margin-top:20px">
+      <button class="ws-subtab active" onclick="switchWsSubTab('daily')">Daily Report</button>
+      <button class="ws-subtab" onclick="switchWsSubTab('completion')">Project Completion Report</button>
+    </div>
+
+    <!-- Sub-tab: Daily Report -->
+    <div class="ws-subtab-content active" id="subtab-daily">
+
+
+    <!-- Production Header Fields -->
+    <div class="ws-panel" style="margin-top:24px">
+      <div class="ws-panel-head"><span class="ws-panel-title">Production Information</span></div>
+      <div class="ws-form-grid cols-4">
+        <div class="ws-field"><label>Production</label><input type="text" id="d-production" placeholder="Production name"></div>
+        <div class="ws-field"><label>Show / Episode</label><input type="text" id="d-show" placeholder="EP or show title"></div>
+        <div class="ws-field"><label>Shoot Day #</label><input type="text" id="d-shootday" placeholder="e.g. 3"></div>
+        <div class="ws-field"><label>Date</label><input type="date" id="d-date"></div>
+        <div class="ws-field"><label>DIT</label><input type="text" id="d-dit" placeholder="DIT name"></div>
+        <div class="ws-field"><label>DoP</label><input type="text" id="d-dop" placeholder="Director of Photography"></div>
+        <div class="ws-field span-2"><label>Location</label><input type="text" id="d-location" placeholder="Shoot location"></div>
+      </div>
+    </div>
+
+    <!-- Camera Summary -->
+    <div class="ws-panel">
+      <div class="ws-panel-head"><span class="ws-panel-title">Camera Summary</span></div>
+      <div class="table-wrap">
+        <table class="ws-table">
+          <thead><tr>
+            <th>Camera</th><th>Camera Model</th><th>MAGs Used</th><th>Total Clips</th><th>Total Duration</th><th>Total GBs (RAW)</th>
+          </tr></thead>
+          <tbody>
+            <tr><td style="color:var(--muted);font-weight:500">A Cam</td><td><input class="ti" style="width:140px" placeholder="e.g. ARRI Alexa 35"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:90px"></td></tr>
+            <tr><td style="color:var(--muted);font-weight:500">B Cam</td><td><input class="ti" style="width:140px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:90px"></td></tr>
+            <tr><td style="color:var(--muted);font-weight:500">C Cam</td><td><input class="ti" style="width:140px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:90px"></td></tr>
+            <tr><td style="color:var(--muted);font-weight:500">D Cam</td><td><input class="ti" style="width:140px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:90px"></td></tr>
+            <tr><td style="color:var(--gold);font-weight:600;font-size:12px;letter-spacing:0.08em">TOTAL</td><td></td><td><input class="ti" style="width:70px;color:var(--gold)"></td><td><input class="ti" style="width:70px;color:var(--gold)"></td><td><input class="ti" style="width:90px;color:var(--gold)"></td><td><input class="ti" style="width:90px;color:var(--gold)"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Mag Log -->
+    <div class="ws-panel">
+      <div class="ws-panel-head">
+        <span class="ws-panel-title">Mag Log — Individual Card Tracking</span>
+        <button class="btn-add" onclick="addMagRow()">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Mag
+        </button>
+      </div>
+      <div class="table-wrap">
+        <table class="ws-table">
+          <thead><tr>
+            <th class="cell-num">#</th><th>Mag ID</th><th>Camera</th><th>Media Type</th>
+            <th>Clips</th><th>Duration</th><th>Raw GBs</th><th>3 Copies Verified</th><th>Checksum</th>
+            <th>LTO Archived</th><th>Dailies Delivered</th><th>Editorial Delivered</th><th>Frame.io Upload</th><th>Notes</th><th></th>
+          </tr></thead>
+          <tbody id="mag-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Delivery Log -->
+    <div class="ws-panel">
+      <div class="ws-panel-head">
+        <span class="ws-panel-title">Delivery Log</span>
+        <button class="btn-add" onclick="addDeliveryRow()">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Entry
+        </button>
+      </div>
+      <div class="table-wrap">
+        <table class="ws-table">
+          <thead><tr>
+            <th class="cell-num">Delivery #</th><th>Drive Label / ID</th><th>Contents</th>
+            <th>Delivered To</th><th>Method</th><th>Date / Time</th><th>Received By (Signature)</th><th>Notes</th><th></th>
+          </tr></thead>
+          <tbody id="delivery-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Notes / Issues -->
+    <div class="ws-panel">
+      <div class="ws-panel-head"><span class="ws-panel-title">Notes / Issues</span></div>
+      <div class="ws-notes">
+        <textarea id="daily-notes" placeholder="Notes and issues from the day..."></textarea>
+      </div>
+    </div>
+
+    <!-- Signatures -->
+    <div class="ws-panel">
+      <div class="ws-panel-head"><span class="ws-panel-title">Signatures</span></div>
+      <div class="sig-strip">
+        <div class="sig-block">
+          <div class="ws-field"><label>DIT Signature</label><input type="text" placeholder="Type name to confirm"></div>
+          <div class="ws-field"><label>Date</label><input type="date"></div>
+        </div>
+        <div class="sig-block">
+          <div class="ws-field"><label>UPM / Prod. Rep Signature</label><input type="text" placeholder="Type name to confirm"></div>
+          <div class="ws-field"><label>Date</label><input type="date"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ws-footer">
+      <button class="btn-sec" onclick="saveReport()">
+        <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        Save Report
+      </button>
+      <button class="btn-pri" onclick="exportCSV()">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Export to CSV
+      </button>
+    </div>
+  </div><!-- /subtab-daily -->
+
+    <!-- Sub-tab: Project Completion Report -->
+    <div class="ws-subtab-content" id="subtab-completion">
+
+
+    <div class="ws-panel" style="margin-top:24px">
+      <div class="ws-panel-head"><span class="ws-panel-title">Production Header</span></div>
+      <div class="ws-form-grid cols-4">
+        <div class="ws-field span-2"><label>Production</label><input type="text" placeholder="Production name"></div>
+        <div class="ws-field span-2"><label>Show / Episode</label><input type="text" placeholder=""></div>
+        <div class="ws-field"><label>Shoot Days</label><input type="text" placeholder="e.g. 1–15"></div>
+        <div class="ws-field"><label>Total Days</label><input type="text" placeholder=""></div>
+        <div class="ws-field"><label>DIT</label><input type="text" placeholder=""></div>
+        <div class="ws-field"><label>DoP</label><input type="text" placeholder=""></div>
+        <div class="ws-field span-4"><label>Post Supervisor</label><input type="text" placeholder=""></div>
+      </div>
+    </div>
+
+    <!-- Production Totals Summary -->
+    <div class="ws-panel">
+      <div class="ws-panel-head"><span class="ws-panel-title">Production Totals Summary</span></div>
+      <div class="ws-form-grid cols-7">
+        <div class="ws-field"><label>Total Shoot Days</label><input type="text" placeholder=""></div>
+        <div class="ws-field"><label>Total MAGs Processed</label><input type="text" placeholder=""></div>
+        <div class="ws-field"><label>Total Clips</label><input type="text" placeholder=""></div>
+        <div class="ws-field"><label>Total Duration</label><input type="text" placeholder=""></div>
+        <div class="ws-field"><label>Total Raw Data (GBs)</label><input type="text" placeholder=""></div>
+        <div class="ws-field"><label>Total Dailies Delivered</label><input type="text" placeholder=""></div>
+        <div class="ws-field"><label>Total Drives Delivered</label><input type="text" placeholder=""></div>
+      </div>
+    </div>
+
+    <!-- Per-Camera Breakdown -->
+    <div class="ws-panel">
+      <div class="ws-panel-head">
+        <span class="ws-panel-title">Per-Camera Breakdown (Full Production)</span>
+      </div>
+      <div class="table-wrap">
+        <table class="ws-table">
+          <thead><tr>
+            <th>Camera</th><th>Camera ID / Model</th><th>Total MAGs</th><th>Total Clips</th><th>Total Duration</th><th>Total GBs</th><th>Avg GBs/Day</th><th>Codec Used</th><th>Media Type</th><th>Card Reader</th><th>Offload SW</th><th>Notes</th>
+          </tr></thead>
+          <tbody>
+            <tr><td style="color:var(--muted);font-weight:500">A Cam</td><td><input class="ti" style="width:130px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:80px"></td><td><input class="ti" style="width:80px"></td><td><input class="ti" style="width:100px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:130px"></td></tr>
+            <tr><td style="color:var(--muted);font-weight:500">B Cam</td><td><input class="ti" style="width:130px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:80px"></td><td><input class="ti" style="width:80px"></td><td><input class="ti" style="width:100px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:130px"></td></tr>
+            <tr><td style="color:var(--muted);font-weight:500">C Cam</td><td><input class="ti" style="width:130px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:80px"></td><td><input class="ti" style="width:80px"></td><td><input class="ti" style="width:100px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:130px"></td></tr>
+            <tr><td style="color:var(--muted);font-weight:500">D Cam</td><td><input class="ti" style="width:130px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:80px"></td><td><input class="ti" style="width:80px"></td><td><input class="ti" style="width:100px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:130px"></td></tr>
+            <tr><td style="color:var(--muted);font-weight:500">Audio/Sound</td><td><input class="ti" style="width:130px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:80px"></td><td><input class="ti" style="width:80px"></td><td><input class="ti" style="width:100px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:130px"></td></tr>
+            <tr><td style="color:var(--muted);font-weight:500">Other</td><td><input class="ti" style="width:130px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:70px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:80px"></td><td><input class="ti" style="width:80px"></td><td><input class="ti" style="width:100px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:90px"></td><td><input class="ti" style="width:130px"></td></tr>
+            <tr><td style="color:var(--gold);font-weight:600;font-size:12px;letter-spacing:0.08em">TOTALS</td><td></td><td><input class="ti" style="width:70px;color:var(--gold)"></td><td><input class="ti" style="width:70px;color:var(--gold)"></td><td><input class="ti" style="width:90px;color:var(--gold)"></td><td><input class="ti" style="width:80px;color:var(--gold)"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Day-by-Day Log -->
+    <div class="ws-panel">
+      <div class="ws-panel-head">
+        <span class="ws-panel-title">Day-by-Day Data Log</span>
+        <button class="btn-add" onclick="addDayRow()">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Day
+        </button>
+      </div>
+      <div class="table-wrap">
+        <table class="ws-table">
+          <thead><tr>
+            <th>Day #</th><th>Date</th><th>Location</th><th>A Cam GBs</th><th>B Cam GBs</th><th>C Cam GBs</th><th>Audio GBs</th><th>Total GBs</th><th>Total Clips</th><th>Dailies Delivered</th><th>Editorial Delivered</th><th>LTO Archived</th><th>Drive ID(s)</th><th>Notes</th><th></th>
+          </tr></thead>
+          <tbody id="day-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Drive Inventory -->
+    <div class="ws-panel">
+      <div class="ws-panel-head">
+        <span class="ws-panel-title">Drive Inventory & Delivery Record</span>
+        <button class="btn-add" onclick="addDriveRow()">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Drive
+        </button>
+      </div>
+      <div class="table-wrap">
+        <table class="ws-table">
+          <thead><tr>
+            <th>Drive #</th><th>Drive Label</th><th>Type/Size</th><th>Contents (Days)</th><th>Copy # (1/2/3)</th><th>Delivered To</th><th>Method</th><th>Date Delivered</th><th>Received By</th><th>Tracking #</th><th>Confirmed Receipt</th><th>Returned to Prod</th><th>Archived (LTO)</th><th>Notes</th><th></th>
+          </tr></thead>
+          <tbody id="drive-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Sign-Off Checklist -->
+    <div class="ws-panel">
+      <div class="ws-panel-head"><span class="ws-panel-title">Project Completion Sign-Off</span></div>
+      <div class="signoff-list">
+        <div class="signoff-item"><span class="signoff-label">All camera original files backed up x3 and checksum verified</span><div class="signoff-options"><label><input type="radio" name="so1" value="complete"> Complete</label><label><input type="radio" name="so1" value="incomplete"> Incomplete</label><label><input type="radio" name="so1" value="na"> N/A</label></div></div>
+        <div class="signoff-item"><span class="signoff-label">All offloading software logs saved and backed up</span><div class="signoff-options"><label><input type="radio" name="so2" value="complete"> Complete</label><label><input type="radio" name="so2" value="incomplete"> Incomplete</label><label><input type="radio" name="so2" value="na"> N/A</label></div></div>
+        <div class="signoff-item"><span class="signoff-label">All drive deliveries documented with signed receipts</span><div class="signoff-options"><label><input type="radio" name="so3" value="complete"> Complete</label><label><input type="radio" name="so3" value="incomplete"> Incomplete</label><label><input type="radio" name="so3" value="na"> N/A</label></div></div>
+        <div class="signoff-item"><span class="signoff-label">All LTO archives completed (if required)</span><div class="signoff-options"><label><input type="radio" name="so4" value="complete"> Complete</label><label><input type="radio" name="so4" value="incomplete"> Incomplete</label><label><input type="radio" name="so4" value="na"> N/A</label></div></div>
+        <div class="signoff-item"><span class="signoff-label">All dailies delivered per spec and confirmed received</span><div class="signoff-options"><label><input type="radio" name="so5" value="complete"> Complete</label><label><input type="radio" name="so5" value="incomplete"> Incomplete</label><label><input type="radio" name="so5" value="na"> N/A</label></div></div>
+        <div class="signoff-item"><span class="signoff-label">All editorial files delivered per spec and confirmed received</span><div class="signoff-options"><label><input type="radio" name="so6" value="complete"> Complete</label><label><input type="radio" name="so6" value="incomplete"> Incomplete</label><label><input type="radio" name="so6" value="na"> N/A</label></div></div>
+        <div class="signoff-item"><span class="signoff-label">All mags returned to camera department</span><div class="signoff-options"><label><input type="radio" name="so7" value="complete"> Complete</label><label><input type="radio" name="so7" value="incomplete"> Incomplete</label><label><input type="radio" name="so7" value="na"> N/A</label></div></div>
+        <div class="signoff-item"><span class="signoff-label">Post house has confirmed receipt of all assets</span><div class="signoff-options"><label><input type="radio" name="so8" value="complete"> Complete</label><label><input type="radio" name="so8" value="incomplete"> Incomplete</label><label><input type="radio" name="so8" value="na"> N/A</label></div></div>
+      </div>
+    </div>
+
+    <!-- Signatures -->
+    <div class="ws-panel">
+      <div class="ws-panel-head"><span class="ws-panel-title">Signatures</span></div>
+      <div class="ws-form-grid cols-4" style="padding-bottom:8px">
+        <div class="ws-field"><label>DIT (Print Name)</label><input type="text" placeholder=""></div>
+        <div class="ws-field"><label>DIT Signature</label><input type="text" placeholder="Type name to confirm"></div>
+        <div class="ws-field"><label>Date</label><input type="date"></div>
+        <div class="ws-field"></div>
+        <div class="ws-field span-2"><label>Post Supervisor Signature</label><input type="text" placeholder="Type name to confirm"></div>
+        <div class="ws-field"><label>Date</label><input type="date"></div>
+      </div>
+    </div>
+
+    <div class="ws-footer">
+      <button class="btn-sec" onclick="saveReport()">
+        <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        Save
+      </button>
+    </div>
+  </div><!-- /subtab-completion -->
+  </div><!-- /tab-reports -->
+
+  <!-- ══ TAB: PRE-PRODUCTION CHECKLIST ══ -->
+  <div class="ws-tab-content" id="tab-preproduction">
+    <div class="ws-panel" style="margin-top:24px">
+      <div class="ws-panel-head">
+        <span class="ws-panel-title">DoP Questions — Pre-Production Checklist</span>
+        <span style="font-size:12px;color:var(--muted)">Fill in answers before Day 1. Mark each item Confirmed when locked.</span>
+      </div>
+      <div class="ws-form-grid cols-3" style="padding-bottom:8px">
+        <div class="ws-field"><label>Production</label><input type="text" placeholder="Production name"></div>
+        <div class="ws-field"><label>DoP</label><input type="text" placeholder="Director of Photography"></div>
+        <div class="ws-field"><label>Date</label><input type="date"></div>
+      </div>
+      <div class="table-wrap">
+        <table class="checklist-table">
+          <thead><tr>
+            <th style="width:40px">#</th>
+            <th>Question</th>
+            <th style="width:260px">Answer / Notes</th>
+            <th style="width:120px">Status</th>
+          </tr></thead>
+          <tbody>
+<tr class="checklist-section-head"><td colspan="4">CAMERA PACKAGE</td></tr><tr>
+      <td class="q-num">1</td>
+      <td><div class="q-text">What camera(s) will be used on the production?</div><div class="q-hint">e.g. ARRI Alexa 35, RED V-RAPTOR, Sony VENICE 2</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">2</td>
+      <td><div class="q-text">What is the firmware version on each camera?</div><div class="q-hint">Confirm before Day 1 — firmware affects codec options</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">3</td>
+      <td><div class="q-text">How many camera bodies will be on set each day?</div><div class="q-hint">Include any crash/POV/secondary cameras</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">4</td>
+      <td><div class="q-text">What recording media is being used (type and capacity)?</div><div class="q-hint">e.g. SXR cards 256GB, CFexpress Type B</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">5</td>
+      <td><div class="q-text">How many magazines/cards per camera per day are expected?</div><div class="q-hint">Used to estimate daily data volume</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">6</td>
+      <td><div class="q-text">Will there be any secondary cameras (drone, GoPro, POV)?</div><div class="q-hint">Need approval + separate workflow consideration</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr class="checklist-section-head"><td colspan="4">CODEC & FORMAT</td></tr><tr>
+      <td class="q-num">7</td>
+      <td><div class="q-text">What codec and recording format will the camera be set to?</div><div class="q-hint">e.g. ProRes 4444, ARRIRAW, REDCODE RAW 5:1</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">8</td>
+      <td><div class="q-text">What resolution will be recorded?</div><div class="q-hint">e.g. 4K UHD (3840×2160), 4.5K, 6K</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">9</td>
+      <td><div class="q-text">What frame rate will be used for principal photography?</div><div class="q-hint">e.g. 23.976, 25, 29.97 — must match post specs</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">10</td>
+      <td><div class="q-text">Will frame rate change between scenes or for any specific shots?</div><div class="q-hint">High frame rate inserts, slow-mo, etc.</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">11</td>
+      <td><div class="q-text">What aspect ratio / framing?</div><div class="q-hint">e.g. 2.39:1, 1.78:1 — affects VFX and delivery</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">12</td>
+      <td><div class="q-text">Will anamorphic lenses be used?</div><div class="q-hint">Affects sensor resolution requirements and post workflow</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr class="checklist-section-head"><td colspan="4">COLOR SCIENCE & LOOK</td></tr><tr>
+      <td class="q-num">13</td>
+      <td><div class="q-text">What color space / gamma will the camera record in?</div><div class="q-hint">e.g. Log C, S-Log3, REDWideGamutRGB/Log3G10, V-Log</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">14</td>
+      <td><div class="q-text">Is the DoP expecting a custom LUT applied on set for monitoring?</div><div class="q-hint">Confirm LUT name/file and where it lives</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">15</td>
+      <td><div class="q-text">What is the creative look intent for the production?</div><div class="q-hint">Warm, cool, desaturated, high contrast — document this</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">16</td>
+      <td><div class="q-text">Will the DoP want to sit down and create an intent LUT for key scenes?</div><div class="q-hint">Naked Workflow — plan time for this</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">17</td>
+      <td><div class="q-text">Should the LUT be baked into the recording or monitoring only?</div><div class="q-hint">CRITICAL — recording LUT is very hard to undo</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">18</td>
+      <td><div class="q-text">What Kelvin / white balance is the DoP targeting as a starting point?</div><div class="q-hint">Default WB helps with one-light consistency</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">19</td>
+      <td><div class="q-text">Will HDRx or any HDR capture mode be used?</div><div class="q-hint">Doubles data; requires specific blend workflow discussion</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr class="checklist-section-head"><td colspan="4">EXPOSURE & IMAGE CONTROL</td></tr><tr>
+      <td class="q-num">20</td>
+      <td><div class="q-text">Will the DoP want the DIT to set or recommend exposure?</div><div class="q-hint">May require a separate Data Tech for offloading</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">21</td>
+      <td><div class="q-text">What is the target base ISO for principal photography?</div><div class="q-hint">Affects noise floor and one-light correction range</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">22</td>
+      <td><div class="q-text">What is the standard shutter angle / shutter speed?</div><div class="q-hint">e.g. 180° / 1/48 — confirm for motion blur intent</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">23</td>
+      <td><div class="q-text">Are there any scenes where exposure settings will change significantly?</div><div class="q-hint">Night scenes, exterior/interior transitions</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">24</td>
+      <td><div class="q-text">Will a light meter or false color be the primary exposure tool?</div><div class="q-hint">Affects on-set monitoring setup</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr class="checklist-section-head"><td colspan="4">ON-SET MONITORING</td></tr><tr>
+      <td class="q-num">25</td>
+      <td><div class="q-text">What monitors will be on set and who is responsible for them?</div><div class="q-hint">Village monitor, camera monitor, DIT monitor</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">26</td>
+      <td><div class="q-text">Does the DoP want a calibrated DIT monitor for color reference?</div><div class="q-hint">Confirm make/model and calibration standard</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">27</td>
+      <td><div class="q-text">Will the DIT be expected to manage the signal chain to the village?</div><div class="q-hint">Router, distribution amp, LUT box</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">28</td>
+      <td><div class="q-text">Does the DoP expect to see a Rec.709 image or a log image on the monitor?</div><div class="q-hint">Determines LUT monitoring approach</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">29</td>
+      <td><div class="q-text">Will any wireless video systems be used on set?</div><div class="q-hint">Teradek, Bolt, etc. — affects signal chain management</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr class="checklist-section-head"><td colspan="4">PREP & TEST DAY</td></tr><tr>
+      <td class="q-num">30</td>
+      <td><div class="q-text">Is a camera/lens test day planned before principal photography?</div><div class="q-hint">Strongly recommended — insist on it</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">31</td>
+      <td><div class="q-text">Will the DIT be present for the camera test?</div><div class="q-hint">Confirm rate and dates</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">32</td>
+      <td><div class="q-text">Is a color pipeline test required before Day 1?</div><div class="q-hint">Test full chain: camera → offload → transcode → post</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="ws-footer">
+      <button class="btn-sec" onclick="saveReport()">
+        <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        Save
+      </button>
+    </div>
+  </div><!-- /tab-preproduction -->
+
+  <!-- ══ TAB: POST-PRODUCTION CHECKLIST ══ -->
+  <div class="ws-tab-content" id="tab-postproduction">
+    <div class="ws-panel" style="margin-top:24px">
+      <div class="ws-panel-head">
+        <span class="ws-panel-title">Post-Production Questions — Checklist</span>
+        <span style="font-size:12px;color:var(--muted)">Complete before cameras roll. Confirm with Post Supervisor and Editorial.</span>
+      </div>
+      <div class="ws-form-grid cols-3" style="padding-bottom:8px">
+        <div class="ws-field"><label>Production</label><input type="text" placeholder="Production name"></div>
+        <div class="ws-field"><label>Post Supervisor</label><input type="text" placeholder="Name"></div>
+        <div class="ws-field"><label>Date</label><input type="date"></div>
+      </div>
+      <div class="table-wrap">
+        <table class="checklist-table">
+          <thead><tr>
+            <th style="width:40px">#</th>
+            <th>Question</th>
+            <th style="width:260px">Answer / Notes</th>
+            <th style="width:120px">Status</th>
+          </tr></thead>
+          <tbody>
+<tr class="checklist-section-head"><td colspan="4">EDITORIAL WORKFLOW</td></tr><tr>
+      <td class="q-num">1</td>
+      <td><div class="q-text">What NLE (editing software) will editorial be using?</div><div class="q-hint">e.g. Avid Media Composer, Premiere Pro, Final Cut Pro X</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">2</td>
+      <td><div class="q-text">What is the required editorial codec and data rate?</div><div class="q-hint">e.g. DNxHD 115, ProRes LT, ProRes 422 HQ</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">3</td>
+      <td><div class="q-text">What raster / resolution should editorial files be delivered in?</div><div class="q-hint">e.g. 1920×1080, 4K UHD — confirm offline vs. online</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">4</td>
+      <td><div class="q-text">What frame rate should editorial files be?</div><div class="q-hint">Must match camera acquisition frame rate</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">5</td>
+      <td><div class="q-text">What is the required file container / wrapper?</div><div class="q-hint">e.g. .mxf for Avid, .mov for ProRes</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">6</td>
+      <td><div class="q-text">Will proxies be created in addition to editorial files?</div><div class="q-hint">Confirm codec, resolution, and naming for proxies</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">7</td>
+      <td><div class="q-text">Is an offline / online workflow being used?</div><div class="q-hint">Offline edit low-res → relink high-res for final grade</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr class="checklist-section-head"><td colspan="4">DAILIES</td></tr><tr>
+      <td class="q-num">8</td>
+      <td><div class="q-text">Are dailies required?</div><div class="q-hint">Yes/No — if yes, all specifications below apply</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">9</td>
+      <td><div class="q-text">What codec should dailies be delivered in?</div><div class="q-hint">H.264 is current standard; confirm resolution</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">10</td>
+      <td><div class="q-text">What resolution should dailies be?</div><div class="q-hint">e.g. 1920×1080, 720p</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">11</td>
+      <td><div class="q-text">Should burn-ins be included on dailies?</div><div class="q-hint">Yes/No — if yes, confirm which metadata fields</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">12</td>
+      <td><div class="q-text">What metadata should appear in burn-ins?</div><div class="q-hint">Scene, take, timecode, camera, reel, date, etc.</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">13</td>
+      <td><div class="q-text">How should dailies be distributed to the team?</div><div class="q-hint">USB thumb drives, Frame.io, Pix, cloud upload, etc.</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">14</td>
+      <td><div class="q-text">Should a custom DoP LUT be applied to dailies, or stock Rec.709?</div><div class="q-hint">Confirm with both DoP and Post Supervisor</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">15</td>
+      <td><div class="q-text">How often should dailies be delivered?</div><div class="q-hint">Same day, next morning, every other day</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr class="checklist-section-head"><td colspan="4">FILE NAMING & FOLDER STRUCTURE</td></tr><tr>
+      <td class="q-num">16</td>
+      <td><div class="q-text">Is there a required folder structure for delivered drives?</div><div class="q-hint">Get the spec document before Day 1</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">17</td>
+      <td><div class="q-text">Is there a required file naming convention?</div><div class="q-hint">e.g. A001C001_231015 — confirm reel naming format</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">18</td>
+      <td><div class="q-text">Should camera original files be renamed or kept in original camera naming?</div><div class="q-hint">Never rename originals without written confirmation</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">19</td>
+      <td><div class="q-text">What metadata must be embedded in the delivered files?</div><div class="q-hint">Timecode, Tape Name, Scene/Take, Frame Rate, ISO, WB</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">20</td>
+      <td><div class="q-text">Will spanned clips (clips across two cards) be a concern?</div><div class="q-hint">Avoid if possible; confirm handling procedure</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr class="checklist-section-head"><td colspan="4">DRIVE DELIVERY</td></tr><tr>
+      <td class="q-num">21</td>
+      <td><div class="q-text">Who is providing the offload / backup hard drives?</div><div class="q-hint">Production, rental house, or DIT-supplied</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">22</td>
+      <td><div class="q-text">What drive interface is required?</div><div class="q-hint">USB-3, Thunderbolt, eSATA — confirm before drives are purchased</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">23</td>
+      <td><div class="q-text">What drive format is required?</div><div class="q-hint">exFAT, HFS+, NTFS — must match post's systems</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">24</td>
+      <td><div class="q-text">How many backup copies are required?</div><div class="q-hint">Industry standard is 3 — confirm explicitly</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">25</td>
+      <td><div class="q-text">How often should drives be delivered to the post house?</div><div class="q-hint">Daily traveler, every other day, wrap delivery</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">26</td>
+      <td><div class="q-text">How should drives be physically delivered?</div><div class="q-hint">Hand delivery with signed receipt, FedEx, counter-to-counter</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">27</td>
+      <td><div class="q-text">Who signs for drive receipt at the post house?</div><div class="q-hint">Get a named contact and their direct number</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">28</td>
+      <td><div class="q-text">What happens at wrap — how many days does the DIT have to complete final deliveries?</div><div class="q-hint">Get this in writing</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr class="checklist-section-head"><td colspan="4">AUDIO SYNC</td></tr><tr>
+      <td class="q-num">29</td>
+      <td><div class="q-text">What audio recorder is the production sound mixer using?</div><div class="q-hint">e.g. Sound Devices 888, Zaxcom Nova</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">30</td>
+      <td><div class="q-text">Will production audio files have matching timecode with camera?</div><div class="q-hint">If yes, auto-sync is possible; if no, manual sync needed</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">31</td>
+      <td><div class="q-text">What audio file format will the sound mixer deliver?</div><div class="q-hint">e.g. .wav, .bwf — confirm sample rate and bit depth</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">32</td>
+      <td><div class="q-text">Will the DIT be responsible for syncing audio, or will post handle it?</div><div class="q-hint">Define responsibility clearly in the contract</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">33</td>
+      <td><div class="q-text">How will audio files be delivered to the DIT each day?</div><div class="q-hint">Card reader, direct copy from recorder, etc.</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr class="checklist-section-head"><td colspan="4">CLOUD & REMOTE DELIVERY</td></tr><tr>
+      <td class="q-num">34</td>
+      <td><div class="q-text">Is a cloud delivery platform being used?</div><div class="q-hint">e.g. Frame.io, Aspera, Pix System, AWS S3</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">35</td>
+      <td><div class="q-text">What are the upload credentials and folder structure for the cloud platform?</div><div class="q-hint">Get before Day 1 — test the upload pipeline</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">36</td>
+      <td><div class="q-text">Does cloud upload replace physical drive delivery, or supplement it?</div><div class="q-hint">Cloud upload does NOT replace physical backups</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">37</td>
+      <td><div class="q-text">What is the internet connection situation on set?</div><div class="q-hint">Affects feasibility of daily cloud uploads</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr class="checklist-section-head"><td colspan="4">VFX & SPECIALIZED DELIVERIES</td></tr><tr>
+      <td class="q-num">38</td>
+      <td><div class="q-text">Will VFX plates need to be delivered separately?</div><div class="q-hint">Confirm codec — often DNG or EXR, ungraded/naked</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">39</td>
+      <td><div class="q-text">What color space should VFX plates be delivered in?</div><div class="q-hint">Log / RAW (naked) or with a specific IDT applied</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">40</td>
+      <td><div class="q-text">Is ACES being used on this production?</div><div class="q-hint">Confirm IDT per camera, ODT for monitoring and delivery</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">41</td>
+      <td><div class="q-text">Will any HDR deliverables be required?</div><div class="q-hint">Rec.2020, Dolby Vision, HDR10 — affects monitoring and workflow</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">42</td>
+      <td><div class="q-text">Will LTO archiving be required?</div><div class="q-hint">Confirm format (LTO-8/9), who manages it, and timeline</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr class="checklist-section-head"><td colspan="4">PLATFORM & DISTRIBUTION SPECS</td></tr><tr>
+      <td class="q-num">43</td>
+      <td><div class="q-text">What platform is this production being delivered to?</div><div class="q-hint">e.g. Netflix, HBO, Discovery, Amazon, theatrical</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">44</td>
+      <td><div class="q-text">Has post shared the platform's technical delivery document?</div><div class="q-hint">Get this document before Day 1 — it governs everything</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">45</td>
+      <td><div class="q-text">Does the platform require I-frame-only codecs?</div><div class="q-hint">Netflix and Discovery both require I-frame; H.264 is NOT acceptable</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">46</td>
+      <td><div class="q-text">What is the minimum required bit depth for this delivery?</div><div class="q-hint">10-bit Log or 16-bit Linear for most major platforms</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">47</td>
+      <td><div class="q-text">Are there any specific color space requirements from the platform?</div><div class="q-hint">e.g. P3-D65, Rec.709, Rec.2020</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr><tr>
+      <td class="q-num">48</td>
+      <td><div class="q-text">Who is the Post Production Supervisor's direct contact for technical questions?</div><div class="q-hint">Name, phone, email — your lifeline during production</div></td>
+      <td class="q-answer"><input type="text" placeholder="Answer / Notes..."></td>
+      <td class="q-status"><select onchange="this.className='q-status-sel '+this.value"><option value="pending">● Pending</option><option value="confirmed">✓ Confirmed</option><option value="na">— N/A</option></select></td>
+    </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="ws-footer">
+      <button class="btn-sec" onclick="saveReport()">
+        <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        Save
+      </button>
+    </div>
+  </div><!-- /tab-postproduction -->
+
+  <!-- ══ TAB: SERVICES CONTRACT ══ -->
+  <div class="ws-tab-content" id="tab-contract">
+
+
+    <!-- Fillable Header -->
+    <div class="ws-panel" style="margin-top:24px">
+      <div class="ws-panel-head"><span class="ws-panel-title">Contract Details — Production & DIT</span></div>
+      <div class="ws-form-grid cols-4">
+        <div class="ws-field span-2"><label>Production Company</label><input type="text" placeholder=""></div>
+        <div class="ws-field span-2"><label>Production Title</label><input type="text" placeholder=""></div>
+        <div class="ws-field span-2"><label>Production Address</label><input type="text" placeholder=""></div>
+        <div class="ws-field span-2"><label>UPM / Representative</label><input type="text" placeholder=""></div>
+        <div class="ws-field span-2"><label>Production Phone / Email</label><input type="text" placeholder=""></div>
+        <div class="ws-field"><label>Agreement Date</label><input type="date"></div>
+      </div>
+    </div>
+
+    <!-- Section 3: Schedule -->
+    <div class="ws-panel">
+      <div class="ws-panel-head"><span class="ws-panel-title">3. Production Schedule</span></div>
+      <div class="ws-form-grid cols-4">
+        <div class="ws-field"><label>Prep / Camera Test Date</label><input type="date"></div>
+        <div class="ws-field"><label>Principal Photography Starts</label><input type="date"></div>
+        <div class="ws-field"><label>Estimated Shoot Days</label><input type="text" placeholder=""></div>
+        <div class="ws-field"><label>Final Asset Delivery Date</label><input type="date"></div>
+        <div class="ws-field span-2"><label>Post-Wrap Availability (Days)</label><input type="text" placeholder="TBD — to be agreed before wrap"></div>
+      </div>
+    </div>
+
+    <!-- Section 4: Compensation -->
+    <div class="ws-panel">
+      <div class="ws-panel-head"><span class="ws-panel-title">4. Compensation & Payment</span></div>
+      <div class="ws-form-grid cols-4">
+        <div class="ws-field"><label>Day Rate</label><input type="text" placeholder="$"></div>
+        <div class="ws-field"><label>Prep Rate</label><input type="text" placeholder="$"></div>
+        <div class="ws-field"><label>Kit / Equipment Rental</label><input type="text" placeholder="$"></div>
+        <div class="ws-field"><label>Overtime Rate</label><input type="text" placeholder="$"></div>
+        <div class="ws-field span-2"><label>Travel Reimbursement</label><input type="text" placeholder=""></div>
+        <div class="ws-field"><label>Lodging</label><input type="text" placeholder=""></div>
+        <div class="ws-field"><label>Per Diem</label><input type="text" placeholder="$"></div>
+      </div>
+    </div>
+
+    <!-- Static contract clauses -->
+    <div class="ws-panel">
+      <div class="ws-panel-head"><span class="ws-panel-title">Contract Terms</span></div>
+
+      <div class="contract-section">
+        <div class="contract-clause-num">1. Parties</div>
+        <div class="contract-body">This Agreement is entered into as of the date signed below, between:<br><br>
+        <strong>DIT / Service Provider:</strong> William J Cox &nbsp;|&nbsp; <strong>Company:</strong> Project Basis LLC &nbsp;|&nbsp; <strong>Address:</strong> 1815 Vermilion Rd, Duluth, MN 55803 &nbsp;|&nbsp; <strong>Phone:</strong> (424) 325-8892<br><br>
+        AND the Production Company as identified above.</div>
+      </div>
+
+      <div class="contract-section">
+        <div class="contract-clause-num">2. Engagement & Scope of Services</div>
+        <div class="contract-body">Production engages DIT as an independent contractor. DIT agrees to deliver the following services:
+          <ul>
+            <li>Camera media offload and verified checksum backup (minimum 3 copies — MD5 or SHA-256)</li>
+            <li>Mag/Card logging and daily data reporting</li>
+            <li>Transcode camera originals to ProRes LT .MOV (preferred) or DNxHR LB .MXF at 1080p camera native aspect ratio with Show LUT applied — clean, no burn-ins</li>
+            <li>Deliver Show LUT files with every daily delivery</li>
+            <li>Deliver sound roll folders and sound reports</li>
+            <li>Deliver camera reports, editor's log, script supervisor notes, and DIT offload reports</li>
+            <li>Daily digital upload via Media Shuttle</li>
+            <li>Deliver Master Drive at production wrap containing: camera originals, sound rolls, transcodes, show LUTs, BTS footage/photos, VFX elements/plates, all reports</li>
+            <li>Format all drives / RAID to macOS compatible file system (HFS+ or APFS)</li>
+          </ul>
+          Any services not listed above are outside the scope of this Agreement. Additional services requested during production may incur additional charges, to be agreed in writing before performance.
+        </div>
+      </div>
+
+      <div class="contract-section">
+        <div class="contract-clause-num">5. Independent Contractor Status</div>
+        <div class="contract-body">DIT is an independent contractor and not an employee of Production. DIT is responsible for all federal, state, and local taxes on compensation received. DIT is not entitled to employee benefits, workers' compensation, or unemployment insurance from Production.</div>
+      </div>
+
+      <div class="contract-section">
+        <div class="contract-clause-num">6. Intellectual Property & Footage Ownership</div>
+        <div class="contract-body">All camera original footage, transcodes, and production materials remain the sole intellectual property of the production company. DIT is a custodian of these materials and acquires no ownership rights. DIT shall not retain copies of camera originals, dailies, or any production material without prior written permission. DIT shall not post, publish, or share any footage, images, or production details without written approval.</div>
+      </div>
+
+      <div class="contract-section">
+        <div class="contract-clause-num">7. Confidentiality</div>
+        <div class="contract-body">DIT agrees to keep all information related to the production strictly confidential during and after the production. This obligation survives termination of this Agreement.</div>
+      </div>
+
+      <div class="contract-section">
+        <div class="contract-clause-num">8. Data Integrity & Liability</div>
+        <div class="contract-body">DIT will use industry-standard checksummed offload procedures (MD5 or SHA-256) and will not reformat any camera media until all agreed backup copies have passed checksum verification. DIT shall maintain offload software logs as documentation. DIT's liability for data loss shall not exceed the total compensation paid under this Agreement, except in cases of gross negligence or willful misconduct.</div>
+      </div>
+
+      <div class="contract-section">
+        <div class="contract-clause-num">9. Equipment & Insurance</div>
+        <div class="contract-body">DIT carries Professional Liability (E&O) insurance and Equipment insurance on owned gear. Production's insurance does NOT cover DIT's equipment unless explicitly stated in writing.</div>
+      </div>
+
+      <div class="contract-section">
+        <div class="contract-clause-num">10. Termination</div>
+        <div class="contract-body">Either party may terminate this Agreement with 24 hours written notice. Upon termination, DIT shall complete in-progress backups, deliver all camera originals and completed backups to Production, and provide all log files and documentation. DIT shall be compensated for all days worked through the date of termination.</div>
+      </div>
+
+      <div class="contract-section">
+        <div class="contract-clause-num">11. Governing Law</div>
+        <div class="contract-body">This Agreement shall be governed by the laws of the State of Minnesota. Any disputes shall be resolved by binding arbitration in Duluth, Minnesota.</div>
+      </div>
+
+      <div class="contract-section">
+        <div class="contract-clause-num">12. Entire Agreement</div>
+        <div class="contract-body">This Agreement, together with the signed DIT Pre-Production Checklist, constitutes the entire agreement between the parties and supersedes all prior verbal or written understandings. Amendments must be in writing and signed by both parties.</div>
+      </div>
+    </div>
+
+    <!-- Signatures -->
+    <div class="ws-panel">
+      <div class="ws-panel-head"><span class="ws-panel-title">Signatures</span></div>
+      <div class="sig-strip">
+        <div class="sig-block">
+          <div style="font-size:13px;color:var(--muted);margin-bottom:8px">D.I.T. / Service Provider</div>
+          <div class="ws-field"><label>Signature</label><input type="text" value="William J Cox" readonly style="color:var(--muted);cursor:default"></div>
+          <div class="ws-field"><label>Print Name</label><input type="text" value="William J Cox" readonly style="color:var(--muted);cursor:default"></div>
+          <div class="ws-field"><label>Date</label><input type="date"></div>
+        </div>
+        <div class="sig-block">
+          <div style="font-size:13px;color:var(--muted);margin-bottom:8px">Production Representative / UPM</div>
+          <div class="ws-field"><label>Signature</label><input type="text" placeholder=""></div>
+          <div class="ws-field"><label>Print Name</label><input type="text" placeholder=""></div>
+          <div class="ws-field"><label>Date</label><input type="date"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ws-footer">
+      <button class="btn-sec" onclick="saveReport()">
+        <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        Save
+      </button>
+    </div>
+  </div><!-- /tab-contract -->
+
+</div>
+</div><!-- /view-workspace -->
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Basis — Digital Imaging Technician Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & VARS ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --card: #161616;
+      --border: #252525;
+      --gold: #C8922A;
+      --gold-light: #e0aa45;
+      --white: #f5f0eb;
+      --muted: #6b6b6b;
+      --text: #c8c2bb;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── PAGE VIEWS (SPA) ── */
+    .view { display: none; }
+    .view.active { display: block; }
+
+    /* ══════════════════════════════════════════
+       SHARED COMPONENTS
+    ══════════════════════════════════════════ */
+
+    /* ── LOGO ── */
+    .logo {
+      display: inline-block;
+      border: 1.5px solid var(--white);
+      padding: 6px 10px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; line-height: 1.3;
+      text-decoration: none; color: var(--white);
+      text-transform: uppercase; cursor: pointer;
+    }
+
+    /* ── SECTION LABELS ── */
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300; line-height: 1.1;
+    }
+    .section-title em { font-style: italic; color: var(--text); }
+    .rule { width: 48px; height: 1px; background: var(--gold); margin: 28px 0; }
+
+    /* ── FORM INPUTS (shared) ── */
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .form-label {
+      font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
+    }
+    .form-input {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 3px; padding: 14px 16px;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif; font-size: 14px;
+      outline: none; transition: border-color 0.2s, background 0.2s;
+      width: 100%;
+    }
+    .form-input:focus { border-color: var(--gold); background: rgba(200,146,42,0.04); }
+    .form-input::placeholder { color: var(--muted); }
+
+    /* ── ALERT ── */
+    .alert {
+      padding: 12px 16px; border-radius: 3px;
+      font-size: 13px; margin-bottom: 16px; display: none;
+    }
+    .alert.error   { background: rgba(192,57,43,0.15); border: 1px solid rgba(192,57,43,0.3); color: #e87878; }
+    .alert.success { background: rgba(39,100,58,0.15);  border: 1px solid rgba(39,100,58,0.3);  color: #7ecb90; }
+    .alert.visible { display: block; }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed; bottom: 32px; right: 32px;
+      background: var(--card); border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 14px 20px; border-radius: 4px;
+      font-size: 13px; color: var(--text);
+      transform: translateY(80px); opacity: 0;
+      transition: all 0.3s; z-index: 9999;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* ══════════════════════════════════════════
+       VIEW 1: MAIN SITE
+    ══════════════════════════════════════════ */
+
+    /* ── MAIN NAV ── */
+    #main-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text); text-decoration: none; transition: color 0.2s; cursor: pointer;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links .cta { color: var(--gold); }
+    .nav-links .cta:hover { color: var(--gold-light); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 120px 48px 80px;
+    }
+    .hero-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 48px;
+    }
+    .hero-lockup {
+      border: 2px solid var(--white);
+      padding: 48px 64px; margin-bottom: 40px; position: relative;
+    }
+    .hero-lockup::before, .hero-lockup::after {
+      content: ''; position: absolute;
+      width: 20px; height: 20px; background: var(--black);
+    }
+    .hero-lockup::before { top: -2px; right: -2px; border-left: 2px solid var(--white); border-bottom: 2px solid var(--white); }
+    .hero-lockup::after  { bottom: -2px; left: -2px; border-right: 2px solid var(--white); border-top: 2px solid var(--white); }
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(72px, 10vw, 140px);
+      font-weight: 700; letter-spacing: 0.06em; line-height: 0.9; text-transform: uppercase;
+    }
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(16px, 2vw, 22px); font-weight: 300; font-style: italic;
+      color: var(--text); max-width: 540px; margin: 0 auto 56px;
+    }
+    .hero-subtitle strong { font-style: normal; color: var(--white); font-weight: 400; }
+    .scroll-cue {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+    }
+    .scroll-cue svg { animation: bounce 2s ease-in-out infinite; }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+    /* ── SERVICES ── */
+    #services { background: var(--dark); padding: 120px 48px; }
+    .services-header { text-align: center; margin-bottom: 72px; }
+    .services-header .rule { margin: 28px auto; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
+      max-width: 1200px; margin: 0 auto;
+    }
+    .service-card { background: var(--card); padding: 44px 36px; transition: background 0.3s; }
+    .service-card:hover { background: #1c1c1c; }
+    .service-icon {
+      width: 40px; height: 40px; background: rgba(200,146,42,0.12);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;
+    }
+    .service-icon svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+    .service-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px; font-weight: 500; letter-spacing: 0.03em; margin-bottom: 12px; color: var(--white);
+    }
+    .service-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    /* ── ABOUT ── */
+    #about {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+      max-width: 1200px; margin: 0 auto; padding: 120px 48px;
+    }
+    .about-body { font-size: 15px; color: var(--text); line-height: 1.8; }
+    .about-body p + p { margin-top: 20px; }
+    .about-stats {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 2px; background: var(--border); border: 1px solid var(--border); margin-top: 48px;
+    }
+    .stat { background: var(--card); padding: 28px 20px; text-align: center; }
+    .stat-number { font-family: 'Barlow Condensed', sans-serif; font-size: 40px; font-weight: 700; color: var(--white); line-height: 1; }
+    .stat-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+    .about-image {
+      position: relative; border-radius: 2px; overflow: hidden;
+      background: var(--card); aspect-ratio: 4/5;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .clapboard { width: 80%; max-width: 340px; }
+    .clapboard-body { background: #1a1a1a; border: 2px solid var(--border); border-radius: 4px; overflow: hidden; }
+    .clapboard-stripe { height: 60px; background: repeating-linear-gradient(-45deg, var(--gold) 0px, var(--gold) 12px, var(--black) 12px, var(--black) 24px); }
+    .clapboard-arm { height: 22px; background: repeating-linear-gradient(-45deg, var(--white) 0px, var(--white) 8px, var(--black) 8px, var(--black) 16px); margin-bottom: 2px; }
+    .clapboard-fields { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border); }
+    .cb-field { background: #111; padding: 10px 12px; }
+    .cb-field-label { font-size: 8px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .cb-field-value { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 600; color: var(--white); margin-top: 3px; }
+
+    /* ── WORK ── */
+    #work { background: var(--dark); padding: 120px 48px; }
+    .work-header { text-align: center; margin-bottom: 64px; }
+    .work-header .rule { margin: 28px auto; }
+    .work-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
+    .work-card {
+      position: relative; aspect-ratio: 3/4; overflow: hidden;
+      border-radius: 2px; background: var(--card);
+      display: flex; align-items: flex-end; cursor: pointer;
+    }
+    .work-card-bg { position: absolute; inset: 0; transition: transform 0.6s ease; }
+    .work-card:hover .work-card-bg { transform: scale(1.04); }
+    .work-card-bg.film { background: linear-gradient(160deg, #1a1006 0%, #0d0d0d 60%); }
+    .work-card-bg.tv   { background: linear-gradient(160deg, #0a0d14 0%, #0d0d0d 60%); }
+    .work-card-bg.comm { background: linear-gradient(160deg, #0e1208 0%, #0d0d0d 60%); }
+    .wc-illustration { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0.25; }
+    .work-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%); }
+    .work-card-content { position: relative; z-index: 2; padding: 28px; }
+    .work-card-icon {
+      width: 32px; height: 32px; background: rgba(200,146,42,0.2);
+      border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px;
+    }
+    .work-card-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+    .work-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 500; color: var(--white); }
+    .trust-bar { max-width: 1200px; margin: 80px auto 0; text-align: center; border-top: 1px solid var(--border); padding-top: 64px; }
+    .trust-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
+    .trust-logos { display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; }
+    .trust-logo { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; color: #333; font-weight: 500; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--dark); padding: 120px 48px; }
+    .contact-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .contact-info-list { margin-top: 40px; display: flex; flex-direction: column; gap: 24px; }
+    .contact-info-item { display: flex; align-items: flex-start; gap: 16px; }
+    .contact-info-icon {
+      width: 36px; height: 36px; flex-shrink: 0; background: rgba(200,146,42,0.1);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    }
+    .contact-info-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+    .contact-info-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+    .contact-info-value { font-size: 15px; color: var(--white); }
+    .contact-form { display: flex; flex-direction: column; gap: 20px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    textarea.form-input { resize: vertical; min-height: 120px; }
+    .btn-send {
+      width: 100%; padding: 18px; background: var(--gold); border: none;
+      color: var(--black); font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 3px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.2s;
+    }
+    .btn-send:hover { background: var(--gold-light); }
+    .btn-send svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ── FOOTER ── */
+    #main-footer {
+      padding: 40px 48px; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-copy { font-size: 12px; color: var(--muted); }
+    .footer-social { display: flex; gap: 16px; }
+    .footer-social a {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+    }
+    .footer-social a:hover { background: rgba(200,146,42,0.2); }
+    .footer-social svg { width: 16px; height: 16px; stroke: var(--text); fill: none; stroke-width: 1.5; }
+
+    /* ══════════════════════════════════════════
+       VIEW 2: LOGIN / REGISTER
+    ══════════════════════════════════════════ */
+    #view-login {
+      min-height: 100vh; position: relative;
+    }
+    #view-login::before {
+      content: ''; position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(200,146,42,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,146,42,0.03) 1px, transparent 1px);
+      background-size: 48px 48px; pointer-events: none; z-index: 0;
+    }
+    .login-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(10,10,10,0.9); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .nav-back {
+      font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; gap: 8px; transition: color 0.2s; font-family: 'Barlow', sans-serif;
+    }
+    .nav-back:hover { color: var(--white); }
+    .nav-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .login-page {
+      min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+      position: relative; z-index: 1;
+    }
+    .login-left {
+      display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+      padding: 120px 80px; border-right: 1px solid var(--border); position: relative; overflow: hidden;
+    }
+    .login-left::after {
+      content: ''; position: absolute; bottom: -60px; left: -60px;
+      width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,146,42,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .panel-rule { width: 40px; height: 1px; background: var(--gold); margin-bottom: 28px; }
+    .panel-desc { font-size: 14px; color: var(--text); line-height: 1.8; max-width: 380px; margin-bottom: 48px; }
+    .feature-list { display: flex; flex-direction: column; gap: 16px; }
+    .feature-item { display: flex; align-items: center; gap: 14px; font-size: 13px; color: var(--muted); }
+    .feature-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    .login-right {
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      padding: 120px 80px;
+    }
+    .tab-bar {
+      display: flex; background: var(--dark); border: 1px solid var(--border);
+      border-radius: 4px; padding: 4px; margin-bottom: 36px; width: 100%; max-width: 400px;
+    }
+    .tab-btn {
+      flex: 1; padding: 10px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
+      background: transparent; border: none; cursor: pointer; border-radius: 3px; color: var(--muted); transition: all 0.2s;
+    }
+    .tab-btn.active { background: var(--card); color: var(--white); border: 1px solid var(--border); }
+    .auth-panel { width: 100%; max-width: 400px; }
+    .auth-panel h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px; font-weight: 500; letter-spacing: 0.05em; margin-bottom: 6px; color: var(--white);
+    }
+    .auth-panel .form-sub { font-size: 13px; color: var(--muted); margin-bottom: 32px; }
+    .form-input-wrap { position: relative; }
+    .toggle-pw {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer; color: var(--muted); transition: color 0.2s; padding: 0;
+    }
+    .toggle-pw:hover { color: var(--white); }
+    .toggle-pw svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+    .strength-bar { height: 3px; border-radius: 2px; background: var(--border); margin-top: 8px; overflow: hidden; display: none; }
+    .strength-fill { height: 100%; border-radius: 2px; width: 0%; transition: width 0.3s, background 0.3s; }
+    .strength-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 4px; display: none; }
+    .btn-submit {
+      width: 100%; padding: 16px; background: var(--gold); border: none; color: var(--black);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 3px; cursor: pointer; transition: background 0.2s, transform 0.1s; margin-top: 8px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-submit:hover { background: var(--gold-light); }
+    .btn-submit:active { transform: scale(0.99); }
+    .btn-submit svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .form-footer { text-align: center; margin-top: 20px; font-size: 12px; color: var(--muted); }
+    .form-footer a { color: var(--gold); text-decoration: none; cursor: pointer; }
+    .form-footer a:hover { color: var(--gold-light); }
+
+    /* ══════════════════════════════════════════
+       VIEW 3: DIT WORKSPACE
+    ══════════════════════════════════════════ */
+    #ws-nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 48px;
+      background: rgba(10,10,10,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .ws-nav-left { display: flex; align-items: center; gap: 32px; }
+    .ws-workspace-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); padding-left: 32px; border-left: 1px solid var(--border);
+    }
+    .ws-nav-right { display: flex; align-items: center; gap: 20px; }
+    .user-pill {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--card); border: 1px solid var(--border); border-radius: 100px; padding: 6px 14px 6px 8px;
+    }
+    .user-avatar {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: rgba(200,146,42,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600; color: var(--gold);
+    }
+    .user-name { font-size: 12px; color: var(--text); }
+    .btn-signout {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); background: none; border: none; cursor: pointer;
+      transition: color 0.2s; display: flex; align-items: center; gap: 6px;
+    }
+    .btn-signout:hover { color: var(--white); }
+    .btn-signout svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .ws-page-header {
+      padding: 48px 48px 32px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-end; justify-content: space-between;
+    }
+    .ws-page-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .ws-page-title { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 300; line-height: 1; }
+    .ws-page-title em { font-style: italic; color: var(--text); }
+    .day-selector { display: flex; align-items: center; gap: 12px; }
+    .day-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .day-input {
+      background: var(--card); border: 1px solid var(--border); border-radius: 3px;
+      padding: 8px 14px; color: var(--white); font-family: 'Barlow', sans-serif; font-size: 14px; outline: none;
+    }
+    .day-input:focus { border-color: var(--gold); }
+    .ws-main { padding: 40px 48px; }
+    .ws-panel { background: var(--card); border: 1px solid var(--border); border-radius: 4px; margin-bottom: 28px; }
+    .ws-panel-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 24px; border-bottom: 1px solid var(--border);
+    }
+    .ws-panel-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+    }
+    .btn-add {
+      display: flex; align-items: center; gap: 6px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); background: none; border: none; cursor: pointer; transition: color 0.2s;
+    }
+    .btn-add:hover { color: var(--white); }
+    .btn-add svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .table-wrap { overflow-x: auto; }
+    .ws-table { width: 100%; border-collapse: collapse; }
+    .ws-table th {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--muted); font-weight: 400; padding: 10px 16px; text-align: left;
+      border-bottom: 1px solid var(--border); white-space: nowrap;
+    }
+    .ws-table td {
+      padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.03);
+      font-size: 13px; color: var(--text); vertical-align: middle;
+    }
+    .ws-table tr:last-child td { border-bottom: none; }
+    .ws-table tr:hover td { background: rgba(255,255,255,0.015); }
+    .cell-num { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; color: var(--muted); width: 32px; text-align: center; }
+    .ti {
+      background: transparent; border: 1px solid transparent;
+      border-radius: 2px; padding: 5px 8px; color: var(--text);
+      font-family: 'Barlow', sans-serif; font-size: 13px; outline: none;
+      transition: border-color 0.15s, background 0.15s; min-width: 60px;
+    }
+    .ti:focus { border-color: var(--border); background: rgba(255,255,255,0.04); color: var(--white); }
+    .ti::placeholder { color: #383838; }
+    .ws-badge {
+      display: inline-block; padding: 3px 10px; border-radius: 3px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 0.06em;
+      background: rgba(200,146,42,0.12); color: var(--gold); white-space: nowrap;
+    }
+    .ws-badge.clickable { cursor: pointer; transition: background 0.2s; }
+    .ws-badge.clickable:hover { background: rgba(200,146,42,0.22); }
+    .check-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: rgba(255,255,255,0.06); border: none; cursor: pointer;
+      font-size: 11px; color: var(--muted); transition: all 0.15s;
+    }
+    .check-btn.done { background: rgba(200,146,42,0.15); color: var(--gold); }
+    .check-btn:hover { background: rgba(200,146,42,0.2); color: var(--gold); }
+    .delete-btn { background: none; border: none; cursor: pointer; color: #333; transition: color 0.2s; padding: 4px; }
+    .delete-btn:hover { color: #c0392b; }
+    .delete-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+    .ws-notes { padding: 20px 24px; }
+    .ws-notes textarea {
+      width: 100%; background: transparent; border: 1px solid var(--border);
+      border-radius: 3px; padding: 16px; color: var(--text);
+      font-family: 'Barlow', sans-serif; font-size: 14px;
+      resize: vertical; min-height: 110px; outline: none; transition: border-color 0.2s;
+    }
+    .ws-notes textarea:focus { border-color: var(--gold); color: var(--white); }
+    .ws-notes textarea::placeholder { color: var(--muted); }
+    .ws-footer { display: flex; justify-content: flex-end; gap: 12px; padding: 24px 0 8px; }
+    .btn-sec {
+      padding: 10px 22px; background: transparent; border: 1px solid var(--border);
+      color: var(--text); border-radius: 3px; cursor: pointer;
+      font-family: 'Barlow', sans-serif; font-size: 13px;
+      display: flex; align-items: center; gap: 7px; transition: all 0.2s;
+    }
+    .btn-sec:hover { border-color: var(--white); color: var(--white); }
+    .btn-sec svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+    .btn-pri {
+      padding: 10px 22px; background: var(--gold); border: 1px solid var(--gold);
+      color: var(--black); border-radius: 3px; cursor: pointer;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 7px; transition: all 0.2s;
+    }
+    .btn-pri:hover { background: var(--gold-light); border-color: var(--gold-light); }
+    .btn-pri svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      #main-nav { padding: 16px 24px; }
+      .nav-links { gap: 16px; }
+      #services, #work, #contact { padding: 80px 24px; }
+      #about { grid-template-columns: 1fr; padding: 80px 24px; }
+      .about-image { display: none; }
+      .work-grid { grid-template-columns: 1fr; }
+      .work-card { aspect-ratio: 16/9; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-lockup { padding: 32px 28px; }
+      #main-footer { flex-direction: column; gap: 20px; text-align: center; }
+      .login-page { grid-template-columns: 1fr; }
+      .login-left { display: none; }
+      .login-right { padding: 100px 28px 60px; }
+      .login-nav { padding: 16px 24px; }
+      #ws-nav { padding: 14px 20px; }
+      .ws-workspace-label { display: none; }
+      .ws-page-header { padding: 28px 20px 20px; flex-direction: column; align-items: flex-start; gap: 16px; }
+      .ws-main { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     VIEW 1: MAIN SITE
+══════════════════════════════════════════ -->
+<div id="view-main" class="view active">
+
+  <nav id="main-nav">
+    <span class="logo" onclick="showView('main')">Project<br>Basis</span>
+    <ul class="nav-links">
+      <li><a onclick="scrollTo('services')">Services</a></li>
+      <li><a onclick="scrollTo('about')">About</a></li>
+      <li><a onclick="scrollTo('work')">Work</a></li>
+      <li><a onclick="scrollTo('contact')">Contact</a></li>
+      <li><a class="cta" onclick="goToWorkspace()">DIT Workspace</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <p class="hero-tag">Digital Imaging Technician Services</p>
+    <div class="hero-lockup">
+      <h1 class="hero-title">Project<br>Basis</h1>
+    </div>
+    <p class="hero-subtitle">Precision color management and data workflows for <strong>cinema-grade productions.</strong></p>
+    <div class="scroll-cue">
+      <span>Explore</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-header">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">DIT Services</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3 class="service-name">On-Set Monitoring</h3>
+        <p class="service-desc">Real-time color-accurate monitoring with calibrated displays ensuring directors and cinematographers see exactly what's being captured.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2a10 10 0 1 0 10 10"/></svg></div>
+        <h3 class="service-name">Live Color Grading</h3>
+        <p class="service-desc">Immediate look application and creative color work on set, providing instant visual feedback for the entire production team.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="3"/><path d="M2 12c0 4.97 4.48 9 10 9s10-4.03 10-9"/><path d="M2 7c0 4.97 4.48 9 10 9s10-4.03 10-9"/></svg></div>
+        <h3 class="service-name">Data Management</h3>
+        <p class="service-desc">Secure, redundant backup systems with checksum verification ensuring your footage is protected from the moment it's recorded.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <h3 class="service-name">Quality Control</h3>
+        <p class="service-desc">Comprehensive frame-by-frame analysis and technical QC reports delivered daily to maintain the highest production standards.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <h3 class="service-name">Workflow Design</h3>
+        <p class="service-desc">Custom pipeline development tailored to your production's unique needs, from camera to post-production handoff.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M17 7h5M2 17h5M17 17h5"/></svg></div>
+        <h3 class="service-name">Dailies Processing</h3>
+        <p class="service-desc">Same-day editorial proxies with synced audio and applied looks, keeping your edit team on schedule.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <div id="about">
+    <div>
+      <p class="section-label">About Us</p>
+      <h2 class="section-title">Crafting the<br><em>Visual Foundation</em></h2>
+      <div class="rule"></div>
+      <div class="about-body">
+        <p>Project Basis was founded on a simple principle: every frame matters. As dedicated Digital Imaging Technicians, we bridge the gap between the creative vision on set and the technical excellence required in post-production.</p>
+        <p>With years of experience across feature films, commercials, and episodic content, we bring meticulous attention to color science, data integrity, and workflow optimization to every project we touch.</p>
+        <p>Our commitment is to be invisible when things go right, and indispensable when challenges arise.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat"><div class="stat-number">50+</div><div class="stat-label">Productions</div></div>
+        <div class="stat"><div class="stat-number">10+</div><div class="stat-label">Years</div></div>
+        <div class="stat"><div class="stat-number">100%</div><div class="stat-label">Data Safe</div></div>
+      </div>
+    </div>
+    <div class="about-image">
+      <div class="clapboard">
+        <div class="clapboard-body">
+          <div class="clapboard-arm"></div>
+          <div class="clapboard-stripe"></div>
+          <div class="clapboard-fields">
+            <div class="cb-field"><div class="cb-field-label">Production</div><div class="cb-field-value">PB-001</div></div>
+            <div class="cb-field"><div class="cb-field-label">Scene</div><div class="cb-field-value">A12</div></div>
+            <div class="cb-field"><div class="cb-field-label">Take</div><div class="cb-field-value">3</div></div>
+            <div class="cb-field" style="grid-column:span 3"><div class="cb-field-label">Director / DP</div><div class="cb-field-value" style="font-size:12px">Project Basis LLC</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="work-header">
+      <p class="section-label">Our Work</p>
+      <h2 class="section-title">Production Experience</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-card-bg film"></div>
+        <div class="wc-illustration">
+          <svg width="140" height="140" viewBox="0 0 140 140" stroke="#C8922A" fill="none" stroke-width="1.5"><rect x="20" y="40" width="100" height="70" rx="4"/><circle cx="70" cy="75" r="22"/><circle cx="70" cy="75" r="8"/><rect x="28" y="48" width="14" height="14" rx="2"/><rect x="98" y="48" width="14" height="14" rx="2"/><rect x="28" y="93" width="14" height="14" rx="2"/><rect x="98" y="93" width="14" height="14" rx="2"/><line x1="20" y1="32" x2="120" y2="20"/><line x1="20" y1="40" x2="20" y2="32"/><line x1="120" y1="40" x2="120" y2="20"/></svg>
+        </div>
+        <div class="work-card-overlay"></div>
+        <div class="work-card-content">
+          <div class="work-card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg></div>
+          <div class="work-card-title">Feature Films</div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-card-bg tv"></div>
+        <div class="wc-illustration">
+          <svg width="140" height="140" viewBox="0 0 140 140" stroke="#C8922A" fill="none" stroke-width="1.5"><rect x="15" y="30" width="110" height="72" rx="5"/><line x1="50" y1="102" x2="90" y2="102"/><line x1="70" y1="102" x2="70" y2="115"/><line x1="50" y1="115" x2="90" y2="115"/><circle cx="70" cy="66" r="20"/><polygon points="62,58 62,74 82,66" fill="#C8922A" stroke="none"/></svg>
+        </div>
+        <div class="work-card-overlay"></div>
+        <div class="work-card-content">
+          <div class="work-card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
+          <div class="work-card-title">Television</div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-card-bg comm"></div>
+        <div class="wc-illustration">
+          <svg width="140" height="140" viewBox="0 0 140 140" stroke="#C8922A" fill="none" stroke-width="1.5"><circle cx="70" cy="70" r="35"/><circle cx="70" cy="70" r="18"/><line x1="70" y1="35" x2="70" y2="52"/><line x1="70" y1="88" x2="70" y2="105"/><line x1="35" y1="70" x2="52" y2="70"/><line x1="88" y1="70" x2="105" y2="70"/></svg>
+        </div>
+        <div class="work-card-overlay"></div>
+        <div class="work-card-content">
+          <div class="work-card-icon"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+          <div class="work-card-title">Commercials</div>
+        </div>
+      </div>
+    </div>
+    <div class="trust-bar">
+      <div class="trust-label">Trusted by leading production companies</div>
+      <div class="trust-logos">
+        <span class="trust-logo">Production Co.</span>
+        <span class="trust-logo">Studio A</span>
+        <span class="trust-logo">Film Works</span>
+        <span class="trust-logo">Cinema Labs</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div>
+        <p class="section-label">Get In Touch</p>
+        <h2 class="section-title">Let's Work<br><em>Together</em></h2>
+        <div class="rule"></div>
+        <p style="font-size:15px;color:var(--text);max-width:360px;line-height:1.8;">Ready to elevate your production's image pipeline? We'd love to hear about your project and discuss how we can support your vision.</p>
+        <div class="contact-info-list">
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><div class="contact-info-label">Email</div><div class="contact-info-value">hello@projectbasis.com</div></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.37 2 2 0 0 1 3.56 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.72a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div><div class="contact-info-label">Phone</div><div class="contact-info-value">+1 (555) 123-4567</div></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="contact-info-label">Based In</div><div class="contact-info-value">Los Angeles, CA</div></div>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="handleContact(event)">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Name</label><input class="form-input" type="text" placeholder="Your name" /></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="your@email.com" /></div>
+        </div>
+        <div class="form-group"><label class="form-label">Project Type</label><input class="form-input" type="text" placeholder="Feature Film, Commercial, TV Series..." /></div>
+        <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" placeholder="Tell us about your project..."></textarea></div>
+        <button type="submit" class="btn-send">
+          Send Message
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="main-footer">
+    <span class="logo" onclick="showView('main')">Project<br>Basis</span>
+    <div class="footer-social">
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="#" aria-label="Vimeo"><svg viewBox="0 0 24 24"><path d="M21.6 8.8c-.8 4.5-5.6 9.5-8.5 11.3C10 22.1 7.4 21 6.5 18.3c-.5-1.6-2-8-2.5-8.8-.5-.8-1.7-.4-2.3.2L.5 8.5C2.7 6.5 5 4 7 4.1c2 0 3.3 1.5 3.7 4.5.4 3.3.8 5.2 1.2 5.7.5.8 1.2.5 2-.3 1.4-1.5 2.7-3.9 2.8-5.3.1-1.9-1.5-2.7-3.1-1.9C14.8 2.5 20 2.7 21.6 8.8z"/></svg></a>
+    </div>
+    <p class="footer-copy">© 2026 Project Basis. All rights reserved.</p>
+  </footer>
+
+</div><!-- /view-main -->
+
+
+<!-- ══════════════════════════════════════════
+     VIEW 2: LOGIN / REGISTER
+══════════════════════════════════════════ -->
+<div id="view-login" class="view">
+
+  <nav class="login-nav">
+    <span class="logo" onclick="showView('main')">Project<br>Basis</span>
+    <button class="nav-back" onclick="showView('main')">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to site
+    </button>
+  </nav>
+
+  <div class="login-page">
+    <div class="login-left">
+      <p class="section-label">DIT Workspace</p>
+      <h1 class="section-title">Member<br><em>Access Portal</em></h1>
+      <div class="panel-rule"></div>
+      <p class="panel-desc">The Project Basis DIT Workspace is a private tool for credentialed members to manage mag logs, delivery records, and daily data reports on production.</p>
+      <div class="feature-list">
+        <div class="feature-item"><div class="feature-dot"></div>Individual card tracking &amp; mag logs</div>
+        <div class="feature-item"><div class="feature-dot"></div>Drive delivery log with chain of custody</div>
+        <div class="feature-item"><div class="feature-dot"></div>Checksum &amp; backup status tracking</div>
+        <div class="feature-item"><div class="feature-dot"></div>CSV export for post-production handoff</div>
+        <div class="feature-item"><div class="feature-dot"></div>Daily notes and issue logging</div>
+      </div>
+    </div>
+
+    <div class="login-right">
+      <div class="tab-bar">
+        <button class="tab-btn active" id="tab-login" onclick="switchAuthTab('login')">Sign In</button>
+        <button class="tab-btn" id="tab-register" onclick="switchAuthTab('register')">Register</button>
+      </div>
+
+      <!-- LOGIN -->
+      <div class="auth-panel" id="auth-login">
+        <h2>Welcome back</h2>
+        <p class="form-sub">Sign in to access the DIT Workspace.</p>
+        <div class="alert error" id="login-error"></div>
+        <div class="alert success" id="login-success"></div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input class="form-input" type="email" id="login-email" placeholder="your@email.com" autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <div class="form-input-wrap">
+            <input class="form-input" type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" style="padding-right:44px" />
+            <button class="toggle-pw" type="button" onclick="togglePw('login-password',this)">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <button class="btn-submit" onclick="handleLogin()">
+          Sign In <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <div class="form-footer">Don't have an account? <a onclick="switchAuthTab('register')">Register here</a></div>
+      </div>
+
+      <!-- REGISTER -->
+      <div class="auth-panel" id="auth-register" style="display:none">
+        <h2>Create account</h2>
+        <p class="form-sub">Request access to the Project Basis DIT Workspace.</p>
+        <div class="alert error" id="reg-error"></div>
+        <div class="alert success" id="reg-success"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" id="reg-first" placeholder="Jane" /></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" id="reg-last" placeholder="Smith" /></div>
+        </div>
+        <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" id="reg-email" placeholder="your@email.com" /></div>
+        <div class="form-group"><label class="form-label">Role / Production Title</label><input class="form-input" type="text" id="reg-role" placeholder="DIT, Data Manager, Post Supervisor..." /></div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <div class="form-input-wrap">
+            <input class="form-input" type="password" id="reg-password" placeholder="Min. 8 characters" autocomplete="new-password" style="padding-right:44px" oninput="updateStrength(this.value)" />
+            <button class="toggle-pw" type="button" onclick="togglePw('reg-password',this)">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <div class="strength-bar" id="strength-bar"><div class="strength-fill" id="strength-fill"></div></div>
+          <div class="strength-label" id="strength-label"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Confirm Password</label>
+          <div class="form-input-wrap">
+            <input class="form-input" type="password" id="reg-confirm" placeholder="••••••••" autocomplete="new-password" style="padding-right:44px" />
+            <button class="toggle-pw" type="button" onclick="togglePw('reg-confirm',this)">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <button class="btn-submit" onclick="handleRegister()">
+          Create Account <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <div class="form-footer">Already have an account? <a onclick="switchAuthTab('login')">Sign in</a></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /view-login -->
+
+
+<!-- ══════════════════════════════════════════
+     VIEW 3: DIT WORKSPACE
+══════════════════════════════════════════ -->
+<div id="view-workspace" class="view">
+
+  <nav id="ws-nav">
+    <div class="ws-nav-left">
+      <span class="logo" onclick="showView('main')">Project<br>Basis</span>
+      <span class="ws-workspace-label">DIT Workspace</span>
+    </div>
+    <div class="ws-nav-right">
+      <div class="user-pill">
+        <div class="user-avatar" id="user-avatar">??</div>
+        <span class="user-name" id="user-name"></span>
+      </div>
+      <button class="btn-signout" onclick="signOut()">
+        <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign Out
+      </button>
+    </div>
+  </nav>
+
+  <div class="ws-page-header">
+    <div>
+      <div class="ws-page-tag">Digital Imaging Technician</div>
+      <h1 class="ws-page-title">Daily <em>Production Report</em></h1>
+    </div>
+    <div class="day-selector">
+      <span class="day-label">Production Day</span>
+      <input class="day-input" type="date" id="prod-date" onchange="loadReport()" />
+    </div>
+  </div>
+
+  <div class="ws-main">
+
+    <!-- MAG LOG -->
+    <div class="ws-panel">
+      <div class="ws-panel-head">
+        <span class="ws-panel-title">Mag Log — Individual Card Tracking</span>
+        <button class="btn-add" onclick="addMagRow()">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Mag
+        </button>
+      </div>
+      <div class="table-wrap">
+        <table class="ws-table">
+          <thead><tr>
+            <th class="cell-num">#</th><th>Mag ID</th><th>Camera</th><th>Media Type</th>
+            <th>Clips</th><th>Duration</th><th>GBs</th><th>Checksum</th>
+            <th>LTO</th><th>Dailies</th><th>Editorial</th><th>Frame.io</th><th>Notes</th><th></th>
+          </tr></thead>
+          <tbody id="mag-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- DELIVERY LOG -->
+    <div class="ws-panel">
+      <div class="ws-panel-head">
+        <span class="ws-panel-title">Delivery Log</span>
+        <button class="btn-add" onclick="addDeliveryRow()">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Entry
+        </button>
+      </div>
+      <div class="table-wrap">
+        <table class="ws-table">
+          <thead><tr>
+            <th class="cell-num">#</th><th>Drive Label / ID</th><th>Contents</th>
+            <th>Delivered To</th><th>Method</th><th>Date / Time</th><th>Received By</th><th>Notes</th><th></th>
+          </tr></thead>
+          <tbody id="delivery-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- NOTES -->
+    <div class="ws-panel">
+      <div class="ws-panel-head"><span class="ws-panel-title">Notes / Issues</span></div>
+      <div class="ws-notes">
+        <textarea id="daily-notes" placeholder="Notes and issues from the day..."></textarea>
+      </div>
+    </div>
+
+    <div class="ws-footer">
+      <button class="btn-sec" onclick="saveReport()">
+        <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        Save Report
+      </button>
+      <button class="btn-pri" onclick="exportCSV()">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Export to CSV
+      </button>
+    </div>
+
+  </div>
+</div><!-- /view-workspace -->
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
+<script>
+  /* ─── SPA ROUTER ─── */
+  function showView(name) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById('view-' + name).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  function scrollTo(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function goToWorkspace() {
+    const session = getSession();
+    if (session) {
+      initWorkspace(session);
+      showView('workspace');
+    } else {
+      showView('login');
+    }
+  }
+
+  /* ─── AUTH HELPERS ─── */
+  function getSession() {
+    try { return JSON.parse(localStorage.getItem('pb_session') || 'null'); } catch { return null; }
+  }
+  function getUsers() {
+    try { return JSON.parse(localStorage.getItem('pb_users') || '[]'); } catch { return []; }
+  }
+  function saveUsers(u) { localStorage.setItem('pb_users', JSON.stringify(u)); }
+
+  function simpleHash(str) {
+    let h = 0;
+    for (let i = 0; i < str.length; i++) { h = ((h << 5) - h) + str.charCodeAt(i); h |= 0; }
+    return h.toString(36);
+  }
+
+  /* ─── AUTH TAB SWITCH ─── */
+  function switchAuthTab(tab) {
+    const isLogin = tab === 'login';
+    document.getElementById('auth-login').style.display    = isLogin ? 'block' : 'none';
+    document.getElementById('auth-register').style.display = isLogin ? 'none'  : 'block';
+    document.getElementById('tab-login').classList.toggle('active', isLogin);
+    document.getElementById('tab-register').classList.toggle('active', !isLogin);
+    clearAlerts();
+  }
+
+  function clearAlerts() {
+    document.querySelectorAll('.alert').forEach(a => a.classList.remove('visible'));
+  }
+  function showAlert(id, msg) {
+    const el = document.getElementById(id);
+    el.textContent = msg; el.classList.add('visible');
+  }
+
+  /* ─── PASSWORD TOGGLE ─── */
+  function togglePw(inputId, btn) {
+    const inp = document.getElementById(inputId);
+    const isText = inp.type === 'text';
+    inp.type = isText ? 'password' : 'text';
+    btn.innerHTML = isText
+      ? `<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`
+      : `<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="1.5"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`;
+  }
+
+  /* ─── PASSWORD STRENGTH ─── */
+  function updateStrength(pw) {
+    const bar = document.getElementById('strength-bar');
+    const fill = document.getElementById('strength-fill');
+    const label = document.getElementById('strength-label');
+    bar.style.display = 'block'; label.style.display = 'block';
+    let score = 0;
+    if (pw.length >= 8) score++;
+    if (pw.length >= 12) score++;
+    if (/[A-Z]/.test(pw)) score++;
+    if (/[0-9]/.test(pw)) score++;
+    if (/[^A-Za-z0-9]/.test(pw)) score++;
+    const levels = [
+      {pct:'20%',color:'#c0392b',text:'Weak'},{pct:'40%',color:'#e67e22',text:'Fair'},
+      {pct:'60%',color:'#f1c40f',text:'Good'},{pct:'80%',color:'#2ecc71',text:'Strong'},
+      {pct:'100%',color:'#27ae60',text:'Very Strong'}
+    ];
+    const lvl = pw.length ? (levels[Math.min(score-1,4)] || levels[0]) : {pct:'0%',color:'',text:''};
+    fill.style.width = lvl.pct; fill.style.background = lvl.color;
+    label.textContent = lvl.text; label.style.color = lvl.color;
+  }
+
+  /* ─── LOGIN ─── */
+  function handleLogin() {
+    clearAlerts();
+    const email = document.getElementById('login-email').value.trim().toLowerCase();
+    const pw    = document.getElementById('login-password').value;
+    if (!email || !pw) return showAlert('login-error', 'Please fill in all fields.');
+    const user = getUsers().find(u => u.email === email && u.passwordHash === simpleHash(pw));
+    if (!user) return showAlert('login-error', 'Incorrect email or password.');
+    const session = { email: user.email, firstName: user.firstName, lastName: user.lastName, role: user.role };
+    localStorage.setItem('pb_session', JSON.stringify(session));
+    showAlert('login-success', `Welcome back, ${user.firstName}. Loading workspace...`);
+    setTimeout(() => { initWorkspace(session); showView('workspace'); clearAlerts(); }, 1100);
+  }
+
+  /* ─── REGISTER ─── */
+  function handleRegister() {
+    clearAlerts();
+    const first = document.getElementById('reg-first').value.trim();
+    const last  = document.getElementById('reg-last').value.trim();
+    const email = document.getElementById('reg-email').value.trim().toLowerCase();
+    const role  = document.getElementById('reg-role').value.trim();
+    const pw    = document.getElementById('reg-password').value;
+    const conf  = document.getElementById('reg-confirm').value;
+    if (!first||!last||!email||!role||!pw||!conf) return showAlert('reg-error','Please fill in all fields.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showAlert('reg-error','Please enter a valid email address.');
+    if (pw.length < 8) return showAlert('reg-error','Password must be at least 8 characters.');
+    if (pw !== conf) return showAlert('reg-error','Passwords do not match.');
+    const users = getUsers();
+    if (users.find(u => u.email === email)) return showAlert('reg-error','An account with this email already exists.');
+    users.push({ email, firstName: first, lastName: last, role, passwordHash: simpleHash(pw) });
+    saveUsers(users);
+    const session = { email, firstName: first, lastName: last, role };
+    localStorage.setItem('pb_session', JSON.stringify(session));
+    showAlert('reg-success', `Account created. Welcome, ${first}!`);
+    setTimeout(() => { initWorkspace(session); showView('workspace'); clearAlerts(); }, 1200);
+  }
+
+  /* ─── SIGN OUT ─── */
+  function signOut() {
+    // auto-save before leaving
+    try { localStorage.setItem(getStorageKey(), JSON.stringify(collectReport())); } catch(e) {}
+    localStorage.removeItem('pb_session');
+    showView('main');
+  }
+
+  /* ─── CONTACT FORM ─── */
+  function handleContact(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-send');
+    btn.innerHTML = 'Message Sent ✓';
+    btn.style.background = '#2d6a2d';
+    setTimeout(() => {
+      btn.innerHTML = 'Send Message <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+      btn.style.background = '';
+    }, 3000);
+  }
+
+  /* ─── WORKSPACE INIT ─── */
+  let currentSession = null;
+
+  function initWorkspace(session) {
+    currentSession = session;
+    document.getElementById('user-avatar').textContent = (session.firstName[0] + session.lastName[0]).toUpperCase();
+    document.getElementById('user-name').textContent = session.firstName + ' ' + session.lastName;
+    const dateInput = document.getElementById('prod-date');
+    if (!dateInput.value) dateInput.value = new Date().toISOString().split('T')[0];
+    loadReport();
+  }
+
+  /* ─── TOAST ─── */
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2800);
+  }
+
+  /* ─── MAG LOG ─── */
+  let magCount = 0;
+  const CHECKSUMS = ['MD5','SHA-1','SHA-256','xxHash'];
+  const METHODS   = ['Hand Delivery','FTP / SFTP','Frame.io','Aspera','Hard Drive — Shipped'];
+
+  function addMagRow(data = {}) {
+    magCount++;
+    const n = magCount;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="cell-num">${n}</td>
+      <td><input class="ti" style="width:72px"  placeholder="A85"       value="${data.magId||''}"></td>
+      <td><input class="ti" style="width:100px" placeholder="A Cam"     value="${data.camera||''}"></td>
+      <td><input class="ti" style="width:104px" placeholder="Alexa SXR" value="${data.mediaType||''}"></td>
+      <td><input class="ti" style="width:52px"  placeholder="0"         value="${data.clips||''}"></td>
+      <td><input class="ti" style="width:80px"  placeholder="0m 0s"     value="${data.duration||''}"></td>
+      <td><input class="ti" style="width:72px"  placeholder="0.00"      value="${data.gbs||''}"></td>
+      <td><span class="ws-badge clickable" onclick="cycleChecksum(this)">${data.checksum||'MD5'}</span></td>
+      <td><button class="check-btn${data.lto      ?' done':''}" onclick="toggleCheck(this)">${data.lto      ?'✓':'×'}</button></td>
+      <td><button class="check-btn${data.dailies  ?' done':''}" onclick="toggleCheck(this)">${data.dailies  ?'✓':'×'}</button></td>
+      <td><button class="check-btn${data.editorial?' done':''}" onclick="toggleCheck(this)">${data.editorial?'✓':'×'}</button></td>
+      <td><button class="check-btn${data.frameio  ?' done':''}" onclick="toggleCheck(this)">${data.frameio  ?'✓':'×'}</button></td>
+      <td><input class="ti" style="width:130px" placeholder="Notes..." value="${data.notes||''}"></td>
+      <td><button class="delete-btn" onclick="deleteRow(this,'mag-body')" title="Remove"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button></td>
+    `;
+    document.getElementById('mag-body').appendChild(tr);
+  }
+
+  function cycleChecksum(el) {
+    const i = CHECKSUMS.indexOf(el.textContent);
+    el.textContent = CHECKSUMS[(i + 1) % CHECKSUMS.length];
+  }
+
+  /* ─── DELIVERY LOG ─── */
+  let deliveryCount = 0;
+
+  function addDeliveryRow(data = {}) {
+    deliveryCount++;
+    const n = deliveryCount;
+    const methodIdx = Math.max(0, METHODS.indexOf(data.method));
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="cell-num">${n}</td>
+      <td><input class="ti" style="width:110px" placeholder="PB-D01-EDIT"            value="${data.driveId||''}"></td>
+      <td><input class="ti" style="width:180px" placeholder="Day 1 ProRes HQ + Audio" value="${data.contents||''}"></td>
+      <td><input class="ti" style="width:160px" placeholder="Pacific Post / T. Chen"  value="${data.deliveredTo||''}"></td>
+      <td><span class="ws-badge clickable" data-method="${methodIdx}" onclick="cycleMethod(this)">${METHODS[methodIdx]}</span></td>
+      <td><input class="ti" style="width:130px" placeholder="MM/DD H:MMpm"           value="${data.datetime||''}"></td>
+      <td><input class="ti" style="width:140px" placeholder="Name — signed"           value="${data.receivedBy||''}"></td>
+      <td><input class="ti" style="width:130px" placeholder="Notes..."                value="${data.notes||''}"></td>
+      <td><button class="delete-btn" onclick="deleteRow(this,'delivery-body')" title="Remove"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button></td>
+    `;
+    document.getElementById('delivery-body').appendChild(tr);
+  }
+
+  function cycleMethod(el) {
+    let i = parseInt(el.dataset.method);
+    i = (i + 1) % METHODS.length;
+    el.dataset.method = i; el.textContent = METHODS[i];
+  }
+
+  function toggleCheck(btn) {
+    btn.classList.toggle('done');
+    btn.textContent = btn.classList.contains('done') ? '✓' : '×';
+  }
+
+  function deleteRow(btn, tbodyId) {
+    btn.closest('tr').remove();
+    document.querySelectorAll(`#${tbodyId} tr`).forEach((tr, i) => {
+      tr.querySelector('.cell-num').textContent = i + 1;
+    });
+  }
+
+  /* ─── SAVE / LOAD ─── */
+  function getStorageKey() {
+    const date = document.getElementById('prod-date').value;
+    return `pb_report_${currentSession ? currentSession.email : 'anon'}_${date}`;
+  }
+
+  function collectReport() {
+    const mags = [];
+    document.querySelectorAll('#mag-body tr').forEach(tr => {
+      const inp = tr.querySelectorAll('input.ti');
+      const chk = tr.querySelectorAll('.check-btn');
+      mags.push({
+        magId: inp[0].value, camera: inp[1].value, mediaType: inp[2].value,
+        clips: inp[3].value, duration: inp[4].value, gbs: inp[5].value,
+        checksum: tr.querySelector('.ws-badge').textContent,
+        lto: chk[0].classList.contains('done'), dailies: chk[1].classList.contains('done'),
+        editorial: chk[2].classList.contains('done'), frameio: chk[3].classList.contains('done'),
+        notes: inp[6].value,
+      });
+    });
+    const deliveries = [];
+    document.querySelectorAll('#delivery-body tr').forEach(tr => {
+      const inp = tr.querySelectorAll('input.ti');
+      deliveries.push({
+        driveId: inp[0].value, contents: inp[1].value, deliveredTo: inp[2].value,
+        method: tr.querySelector('.ws-badge').textContent,
+        datetime: inp[3].value, receivedBy: inp[4].value, notes: inp[5].value,
+      });
+    });
+    return { date: document.getElementById('prod-date').value, notes: document.getElementById('daily-notes').value, mags, deliveries };
+  }
+
+  function saveReport() {
+    localStorage.setItem(getStorageKey(), JSON.stringify(collectReport()));
+    showToast('Report saved ✓');
+  }
+
+  function loadReport() {
+    document.getElementById('mag-body').innerHTML = '';
+    document.getElementById('delivery-body').innerHTML = '';
+    magCount = 0; deliveryCount = 0;
+    const raw = localStorage.getItem(getStorageKey());
+    if (raw) {
+      const report = JSON.parse(raw);
+      report.mags.forEach(m => addMagRow(m));
+      report.deliveries.forEach(d => addDeliveryRow(d));
+      document.getElementById('daily-notes').value = report.notes || '';
+    }
+    if (!document.querySelector('#mag-body tr'))      addMagRow();
+    if (!document.querySelector('#delivery-body tr')) addDeliveryRow();
+  }
+
+  function exportCSV() {
+    const report = collectReport();
+    const who = currentSession ? `${currentSession.firstName} ${currentSession.lastName} (${currentSession.role})` : 'Unknown';
+    let csv = `Project Basis — Daily Report\nProduction Date: ${report.date}\nPrepared by: ${who}\n\n`;
+    csv += 'MAG LOG\n';
+    csv += ['#','Mag ID','Camera','Media Type','Clips','Duration','GBs','Checksum','LTO','Dailies','Editorial','Frame.io','Notes'].map(h=>`"${h}"`).join(',') + '\n';
+    report.mags.forEach((m,i) => {
+      csv += [i+1,m.magId,m.camera,m.mediaType,m.clips,m.duration,m.gbs,m.checksum,
+        m.lto?'✓':'',m.dailies?'✓':'',m.editorial?'✓':'',m.frameio?'✓':'',m.notes
+      ].map(v=>`"${v}"`).join(',') + '\n';
+    });
+    csv += '\nDELIVERY LOG\n';
+    csv += ['#','Drive Label/ID','Contents','Delivered To','Method','Date/Time','Received By','Notes'].map(h=>`"${h}"`).join(',') + '\n';
+    report.deliveries.forEach((d,i) => {
+      csv += [i+1,d.driveId,d.contents,d.deliveredTo,d.method,d.datetime,d.receivedBy,d.notes
+      ].map(v=>`"${v}"`).join(',') + '\n';
+    });
+    csv += '\nNOTES\n' + report.notes;
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv'}));
+    a.download = `PB-Report-${report.date}.csv`;
+    a.click();
+    showToast('CSV exported ✓');
+  }
+
+  /* ─── AUTO-SAVE ON LEAVE ─── */
+  window.addEventListener('beforeunload', () => {
+    if (currentSession) {
+      try { localStorage.setItem(getStorageKey(), JSON.stringify(collectReport())); } catch(e) {}
+    }
+  });
+
+  /* ─── INIT: check for existing session ─── */
+  (function() {
+    const session = getSession();
+    if (session) {
+      // Session exists — workspace link goes directly to workspace
+      currentSession = session;
+    }
+  })();
+</script>
+</body>
+</html>
